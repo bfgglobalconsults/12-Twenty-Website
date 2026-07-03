@@ -23,7 +23,9 @@ export default function Navbar() {
             isScrolled ? 'bg-coral-500' : 'bg-transparent'
           }`}
         >
+
           <div className="flex items-center">
+           
             <Image
               src="/assets/12TWENTY.png"
               alt="12TWENTY"
@@ -35,7 +37,7 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-8 text-white">
             <div className="relative group">
-              <button className="flex items-center gap-1 hover:text-white/80">
+              <a href="/services" className="flex items-center gap-1 hover:text-white/80">
                 Services
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -45,13 +47,13 @@ export default function Navbar() {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </button>
+              </a>
             </div>
-            <a href="#" className="hover:text-white/80">
+            <a href="/projects" className="hover:text-white/80">
               Projects
             </a>
             <div className="relative group">
-              <button className="flex items-center gap-1 hover:text-white/80">
+              <a href="/about" className="flex items-center gap-1 hover:text-white/80">
                 About
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -61,7 +63,7 @@ export default function Navbar() {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </button>
+              </a>
             </div>
             <a href="#" className="hover:text-white/80">
               Insights

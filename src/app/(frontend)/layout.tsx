@@ -1,6 +1,8 @@
 import React from 'react'
 import { Urbanist } from 'next/font/google'
 import './styles.css'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 const urbanist = Urbanist({
   subsets: ['latin'],
@@ -19,7 +21,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" className={urbanist.variable}>
       <body className={urbanist.className}>
+        <Navbar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )
