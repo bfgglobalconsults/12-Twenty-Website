@@ -75,7 +75,7 @@ export default function IntegratedServices() {
   ]
 
   return (
-    <section className="bg-coral-500 py-20 px-8">
+    <section className="bg-coral-500 py-20 rounded-2xl my-4 px-8">
       <div className="max-w-7xl mx-auto">
         <span className="text-white text-sm font-semibold mb-6 block">Our Expertise</span>
 

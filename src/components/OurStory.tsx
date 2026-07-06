@@ -36,16 +36,17 @@ export default function OurStory() {
           </p>
         </div>
 
-        <div className="bg-gradient-to-r from-teal-900 to-teal-800 rounded-3xl p-12">
-          <h3 className="text-3xl font-bold mb-8 text-white">Integrated Delivery Model</h3>
+        <div>
+           <div className="bg-[#14212D] rounded-2xl p-3 my-4">
+          <h3 className="text-3xl font-bold mb-8 text-[#F05C36]">Integrated Delivery Model</h3>
           <p className="text-white/90 text-lg mb-12 max-w-4xl leading-relaxed">
             Our Integrated Delivery Model combines project management, design coordination,
             procurement intelligence, site supervision, and facility planning into one governed
             program. This eliminates the traditional gaps between phases and ensures continuity of
             knowledge, accountability, and quality.
           </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+</div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
             <div className="bg-coral-500 rounded-2xl p-8">
               <div className="text-5xl font-bold mb-2">15+</div>
               <div className="text-white/90">Years Experience</div>

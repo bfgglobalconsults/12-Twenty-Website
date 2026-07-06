@@ -1,6 +1,6 @@
 export default function SystemsDriven() {
   return (
-    <section className="bg-coral-500 py-20 px-8">
+    <section className="bg-coral-500 rounded-2xl py-20 px-8">
       <div className="max-w-7xl mx-auto">
         <span className="text-white text-sm font-semibold mb-6 block">Technology & Operations</span>
 
