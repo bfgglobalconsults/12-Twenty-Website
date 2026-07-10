@@ -1,6 +1,14 @@
+'use client'
+
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function TechnologyOperations() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
   const systems = [
     {
       metric: '100%',
@@ -66,40 +74,73 @@ export default function TechnologyOperations() {
   ]
 
   return (
-    <section className="bg-[#E85D3F] rounded-2xl py-20 px-6 lg:py-32 lg:px-12 mb-12">
+    <section ref={ref} className="bg-[#E85D3F] rounded-2xl py-20 px-6 lg:py-32 lg:px-12 mb-12">
       <div className="max-w-7xl mx-auto">
-        <span className="text-white font-medium text-sm tracking-wide uppercase block mb-6">
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-white font-medium text-sm tracking-wide uppercase block mb-6"
+        >
           Technology & Operations
-        </span>
+        </motion.span>
 
-        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight"
+        >
           Systems-Driven Delivery.
           <br />
           Real-Time Intelligence.
-        </h2>
+        </motion.h2>
 
-        <p className="text-white text-base lg:text-lg mb-16 max-w-4xl">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-white text-base lg:text-lg mb-16 max-w-4xl"
+        >
           We deploy enterprise-grade digital infrastructure to manage complexity, reduce uncertainty
           and deliver transparency at every stage of the project lifecycle.
-        </p>
+        </motion.p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
           {systems.map((system, index) => (
-            <div key={index} className="bg-white rounded-3xl p-8 flex flex-col">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 * index }}
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-3xl p-8 flex flex-col"
+            >
               <div className="flex items-center justify-between mb-6">
-                <Image
-                  src="/assets/stop-circle.png"
-                  alt="System Icon"
-                  width={48}
-                  height={48}
-                  className="w-12 h-12"
-                />
-                <div className="text-right">
+                <motion.div
+                  initial={{ opacity: 0, rotate: -180 }}
+                  animate={isInView ? { opacity: 1, rotate: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.2 + 0.1 * index }}
+                >
+                  <Image
+                    src="/assets/stop-circle.png"
+                    alt="System Icon"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12"
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.3 + 0.1 * index }}
+                  className="text-right"
+                >
                   <div className="text-2xl font-bold text-gray-900">{system.metric}</div>
                   <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
                     {system.metricLabel}
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               <h3 className="text-xl font-bold text-gray-900 mb-4">{system.title}</h3>
@@ -107,22 +148,34 @@ export default function TechnologyOperations() {
               <div className="border-t border-gray-200 pt-4">
                 <p className="text-sm text-gray-600 leading-relaxed">{system.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         <div>
-          <h3 className="text-white font-medium text-sm tracking-wide uppercase mb-8">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="text-white font-medium text-sm tracking-wide uppercase mb-8"
+          >
             Performance Metrics
-          </h3>
+          </motion.h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {metrics.map((metric, index) => (
-              <div key={index} className="bg-white rounded-3xl p-8 text-center">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.9 + 0.1 * index }}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white rounded-3xl p-8 text-center"
+              >
                 <div className="text-3xl lg:text-4xl font-bold text-[#E85D3F] mb-4">
                   {metric.value}
                 </div>
                 <div className="text-sm text-gray-900 font-medium">{metric.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

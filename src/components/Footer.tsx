@@ -18,15 +18,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Logo and Description */}
           <div className="lg:col-span-1">
-             <div className="flex items-center my-4">
-                        <Image
-                          src="/assets/12TWENTY.png"
-                          alt="12TWENTY"
-                          width={200}
-                          height={80}
-                          className="w-auto"
-                        />
-                      </div>
+            <div className="flex items-center my-4">
+              <Image
+                src="/assets/12TWENTY.png"
+                alt="12TWENTY"
+                width={200}
+                height={80}
+                className="w-auto"
+              />
+            </div>
             <p className="text-white text-sm leading-relaxed mb-8">
               12Twenty partners with enterprise clients, developers, and institutions to deliver
               complex infrastructure with precision, transparency, and accountability.
@@ -60,27 +60,42 @@ export default function Footer() {
             <h4 className="text-lg font-bold mb-6">Services</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-white hover:text-white/80 transition-colors text-sm">
+                <a
+                  href="/services"
+                  className="text-white hover:text-white/80 transition-colors text-sm"
+                >
                   Construction Design & Management
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white hover:text-white/80 transition-colors text-sm">
+                <a
+                  href="/services"
+                  className="text-white hover:text-white/80 transition-colors text-sm"
+                >
                   Residential & Infrastructure
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white hover:text-white/80 transition-colors text-sm">
+                <a
+                  href="/services"
+                  className="text-white hover:text-white/80 transition-colors text-sm"
+                >
                   Roadworks & Civil Engineering
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white hover:text-white/80 transition-colors text-sm">
+                <a
+                  href="/services"
+                  className="text-white hover:text-white/80 transition-colors text-sm"
+                >
                   Facility Maintenance
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white hover:text-white/80 transition-colors text-sm">
+                <a
+                  href="/services"
+                  className="text-white hover:text-white/80 transition-colors text-sm"
+                >
                   Materials Procurement
                 </a>
               </li>

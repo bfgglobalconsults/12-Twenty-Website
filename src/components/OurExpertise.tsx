@@ -1,6 +1,14 @@
+'use client'
+
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function OurExpertise() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
   const services = [
     {
       image: '/assets/construction-icon.png',
@@ -55,22 +63,44 @@ export default function OurExpertise() {
   ]
 
   return (
-    <section className="bg-[#E85D3F] rounded-xl py-20 px-6 lg:py-12 lg:px-12 mb-12">
+    <section ref={ref} className="bg-[#E85D3F] rounded-xl py-20 px-6 lg:py-12 lg:px-12 mb-12">
       <div className="max-w-7xl mx-auto">
-        <span className="text-white font-medium text-sm tracking-wide uppercase block mb-6">
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-white font-medium text-sm tracking-wide uppercase block mb-6"
+        >
           Our Expertise
-        </span>
+        </motion.span>
 
-        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-16 leading-tight">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-16 leading-tight"
+        >
           Integrated Services.
           <br />
           Lifelong Accountability.
-        </h2>
+        </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-3xl p-8 flex flex-col h-full">
-              <div className="mb-6">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 * index }}
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-3xl p-8 flex flex-col h-full"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + 0.1 * index }}
+                className="mb-6"
+              >
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -78,7 +108,7 @@ export default function OurExpertise() {
                   height={48}
                   className="w-12 h-12"
                 />
-              </div>
+              </motion.div>
 
               <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
 
@@ -99,7 +129,7 @@ export default function OurExpertise() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

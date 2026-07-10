@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import AboutUs from '@/components/AboutUs'
 import OurExpertise from '@/components/OurExpertise'
@@ -12,17 +11,12 @@ import ClientTestimonials from '@/components/ClientTestimonials'
 import LatestBlogs from '@/components/LatestBlogs'
 import ConsultationForm from '@/components/ConsultationForm'
 import Newsletter from '@/components/Newsletter'
-import FeaturedProperties from '@/components/FeaturedProperties'
-import PricingSection from '@/components/PricingSection'
-import Testimonials from '@/components/Testimonials'
-import Footer from '@/components/Footer'
 import './styles.css'
 import SectionSpacing from '@/utilities/SectionSpacing'
 
 export default async function HomePage() {
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
       <Hero />
       <SectionSpacing>
         <AboutUs />
@@ -37,10 +31,6 @@ export default async function HomePage() {
         <ConsultationForm />
         <Newsletter />
       </SectionSpacing>
-      {/* <FeaturedProperties />
-      <PricingSection />
-      <Testimonials /> */}
-      <Footer />
     </div>
   )
 }
