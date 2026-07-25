@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 
 const nextConfig: NextConfig = {
-  serverComponentsExternalPackages: ['undici', 'payload', '@payloadcms/storage-vercel-blob'],
+  serverExternalPackages: ['undici', 'payload', '@payloadcms/storage-vercel-blob'],
   images: {
     remotePatterns: [
       {
