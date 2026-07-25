@@ -21,7 +21,7 @@ export default function ManagedProjects() {
   ]
 
   return (
-    <section className="bg-white py-20 px-6 lg:py-32 lg:px-12">
+    <section className="bg-white py-10 px-6 lg:py-12 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <span className="text-[#E85D3F] font-medium text-sm tracking-wide uppercase block mb-6">
           Other Projects

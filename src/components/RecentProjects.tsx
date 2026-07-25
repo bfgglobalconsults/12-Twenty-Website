@@ -1,48 +1,38 @@
 import React from 'react'
 import Image from 'next/image'
+import { getPayload } from '@/utilities/getPayload'
+import type { Project } from '@/payload-types'
 
-export default function RecentProjects() {
-  const projects = [
-    {
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800',
-      category: 'COMMERCIAL / MIXED-USE',
-      year: '2021 - 2024',
-      title: 'Commercial High-Rise Development',
-      value: '$762M',
-      deliveryChallenge:
-        'Phased construction above an live navigation hub with zero disruption to daily commuter traffic.',
-      managementOutcome:
-        'Delivered on budget with N+2.5 schedule adherence. Achieved LEED platinum certification.',
-      imagePosition: 'left',
+export default async function RecentProjects() {
+  const payload = await getPayload()
+
+  const projectsData = await payload.find({
+    collection: 'projects',
+    limit: 3,
+    where: {
+      status: {
+        equals: 'completed',
+      },
     },
-    {
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800',
-      category: 'RESIDENTIAL / LUXURY',
-      year: '2023 - 2025',
-      title: 'Luxury Multi-Family Residential Complex',
-      value: '$420M',
-      deliveryChallenge:
-        'Coordinating 15 specialist trade contractors across a constrained waterfront site with tidal environmental compliance.',
-      managementOutcome:
-        'Zero environmental incidents. 98% first fix quality rate. Pre-sold 95% of unit of completion.',
-      imagePosition: 'right',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800',
-      category: 'CIVIL / GOVERNMENT',
-      year: '2020 - 2024',
-      title: 'National Infrastructure Upgrade Programme',
-      value: '$1.8B',
-      deliveryChallenge:
-        'Managing 240km of highway upgrades, 18 bridge replacements, and smart highway technology integration under live traffic conditions.',
-      managementOutcome:
-        'Completed 6 months ahead of programme. Zero serious safety incidents across 1200+ operative workforce.',
-      imagePosition: 'left',
-    },
-  ]
+    sort: '-createdAt',
+  })
+
+  const projects = projectsData.docs.map((project: Project, index: number) => ({
+    image:
+      typeof project.featuredImage === 'object' && project.featuredImage
+        ? project.featuredImage.url
+        : '',
+    category: project.category?.toUpperCase().replace('-', ' / '),
+    year: project.year,
+    title: project.title,
+    value: project.value,
+    deliveryChallenge: project.deliveryChallenge,
+    managementOutcome: project.managementOutcome,
+    imagePosition: index % 2 === 0 ? 'left' : 'right',
+  }))
 
   return (
-    <section className="bg-white py-20 px-6 lg:py-32 lg:px-12">
+    <section className="bg-white py-10 px-6 lg:py-12 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <span className="text-[#E85D3F] font-medium text-sm tracking-wide uppercase block mb-6">
           Recent Projects

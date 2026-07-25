@@ -7,11 +7,16 @@ const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 
 const nextConfig: NextConfig = {
+  serverComponentsExternalPackages: ['undici', 'payload', '@payloadcms/storage-vercel-blob'],
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
       },
     ],
     localPatterns: [
@@ -23,11 +28,75 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  webpack: (webpackConfig) => {
+  webpack: (webpackConfig, { isServer }) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
       '.js': ['.ts', '.tsx', '.js', '.jsx'],
       '.mjs': ['.mts', '.mjs'],
+    }
+
+    // Add plugin to handle node: protocol and block server-only imports on client
+    webpackConfig.plugins = webpackConfig.plugins || []
+
+    if (!isServer) {
+      const webpack = require('webpack')
+
+      // Block entire problem packages on client side
+      webpackConfig.plugins.push(
+        new webpack.NormalModuleReplacementPlugin(
+          /@payloadcms\/(storage-vercel-blob|plugin-cloud-storage)/,
+          path.resolve(dirname, 'src/lib/VercelBlobClientUploadHandlerStub.tsx'),
+        ),
+      )
+    }
+
+    webpackConfig.plugins.push({
+      apply(compiler) {
+        compiler.hooks.normalModuleFactory.tap('NodeProtocolPlugin', (nmf) => {
+          nmf.hooks.beforeResolve.tap('NodeProtocolPlugin', (resolveData) => {
+            if (resolveData.request.startsWith('node:')) {
+              const moduleName = resolveData.request.slice(5)
+              resolveData.request = moduleName
+            }
+          })
+        })
+      },
+    })
+
+    // Apply these fallbacks strictly when bundling for the browser client
+    if (!isServer) {
+      webpackConfig.resolve.fallback = {
+        ...webpackConfig.resolve.fallback,
+        // Block standard server module errors
+        assert: false,
+        worker_threads: false,
+        fs: false,
+        stream: false,
+        crypto: false,
+        path: false,
+        os: false,
+        util: false,
+        'util/types': false,
+        buffer: false,
+        process: false,
+        async_hooks: false,
+        http: false,
+        https: false,
+        net: false,
+        tls: false,
+        zlib: false,
+        dns: false,
+        sqlite: false,
+        sqlite3: false,
+        child_process: false,
+        module: false,
+        diagnostics_channel: false,
+        console: false,
+
+        // Block package-level browser bundle leaks
+        'pino-pretty': false,
+        undici: false,
+      }
     }
 
     return webpackConfig

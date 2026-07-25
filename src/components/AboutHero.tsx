@@ -12,7 +12,7 @@ export default function AboutHero() {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900/60 to-gray-900/90" />
 
-      <div className="relative max-w-7xl mx-auto px-4 md:px-8 h-full flex flex-col justify-center pt-24 md:pt-0">
+      <div className="relative max-w-7xl mx-auto px-4 md:px-8 h-full flex flex-col pt-24 md:pt-0">
         <div className="max-w-3xl">
           <motion.span
             initial={{ opacity: 0, y: 20 }}

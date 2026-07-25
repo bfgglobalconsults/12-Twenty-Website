@@ -1,6 +1,8 @@
+import Image from 'next/image'
+
 export default function Leadership() {
   return (
-    <section className="bg-white py-20 px-8">
+    <section className="bg-white py-10 px-8">
       <div className="max-w-7xl mx-auto">
         <span className="text-coral-500 text-sm font-semibold mb-6 block">Leadership</span>
 
@@ -15,11 +17,18 @@ export default function Leadership() {
           engineering, commercial governance, and institutional delivery.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-gray-50 rounded-3xl p-8">
-            <div className="bg-gray-200 rounded-2xl h-64 mb-6"></div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Richard Caldwell</h3>
-            <p className="text-coral-500 font-semibold mb-3">Managing Director</p>
+            <div className="bg-gray-200 rounded-2xl h-64 mb-6 relative overflow-hidden">
+              <Image
+                src="/assets/12TwentyMD.png"
+                alt="Mr Prince - MD/CEO"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Mr Prince</h3>
+            <p className="text-coral-500 font-semibold mb-3">MD/CEO</p>
             <div className="flex gap-2 mb-4">
               <span className="text-xs border border-gray-300 px-3 py-1 rounded-full">PMP</span>
               <span className="text-xs border border-gray-300 px-3 py-1 rounded-full">RICS</span>

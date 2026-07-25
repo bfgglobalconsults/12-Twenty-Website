@@ -63,7 +63,7 @@ export default function OurExpertise() {
   ]
 
   return (
-    <section ref={ref} className="bg-[#E85D3F] rounded-xl py-20 px-6 lg:py-12 lg:px-12 mb-12">
+    <section ref={ref} className="bg-[#14212D] rounded-xl py-20 px-6 lg:py-12 lg:px-12 mb-12">
       <div className="max-w-7xl mx-auto">
         <motion.span
           initial={{ opacity: 0, y: 20 }}

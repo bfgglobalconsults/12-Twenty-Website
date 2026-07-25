@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import ConsultationModal from './ConsultationModal'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +25,11 @@ export default function Navbar() {
       document.body.style.overflow = 'unset'
     }
   }, [isMobileMenuOpen])
+
+  const openModal = () => {
+    setIsModalOpen(true)
+    setIsMobileMenuOpen(false)
+  }
 
   return (
     <>
@@ -47,7 +54,6 @@ export default function Navbar() {
               <div className="relative group">
                 <a href="/services" className="flex items-center gap-1 hover:text-white/80">
                   Services
-                 
                 </a>
               </div>
               <a href="/projects" className="hover:text-white/80">
@@ -56,7 +62,6 @@ export default function Navbar() {
               <div className="relative group">
                 <a href="/about" className="flex items-center gap-1 hover:text-white/80">
                   About
-                 
                 </a>
               </div>
               <a href="#" className="hover:text-white/80">
@@ -65,6 +70,7 @@ export default function Navbar() {
             </div>
 
             <button
+              onClick={openModal}
               className={`hidden md:flex px-6 py-3 rounded-full items-center gap-2 font-semibold transition-all duration-300 ${
                 isScrolled
                   ? 'bg-white text-coral-500 hover:bg-gray-100'
@@ -183,7 +189,10 @@ export default function Navbar() {
             </div>
           </nav>
 
-          <button className="w-full px-6 py-4 bg-coral-500 text-white rounded-full hover:bg-coral-600 flex items-center justify-center gap-2 font-semibold text-lg mt-auto">
+          <button
+            onClick={openModal}
+            className="w-full px-6 py-4 bg-coral-500 text-white rounded-full hover:bg-coral-600 flex items-center justify-center gap-2 font-semibold text-lg mt-auto"
+          >
             Start a Consultation
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -191,6 +200,8 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   )
 }

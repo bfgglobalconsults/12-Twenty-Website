@@ -13,7 +13,7 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="bg-[#E85D3F] rounded-2xl py-20 px-6 lg:py-24 lg:px-12">
+    <section className="bg-[#E85D3F] rounded-2xl py-10 px-6 lg:py-12 lg:px-12">
       <div className="max-w-4xl mx-auto text-center">
         <span className="text-white font-medium text-sm tracking-wide uppercase block mb-6">
           NEWSLETTER
