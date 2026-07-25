@@ -6,25 +6,23 @@ interface VercelBlobAdapterArgs {
 }
 
 export const vercelBlobAdapter = ({ token }: VercelBlobAdapterArgs): Adapter => ({
-  name: 'vercel-blob',
-  
   async handleUpload({ data, filename }) {
     const blob = await put(filename, data, {
       access: 'public',
       token,
     })
-    
+
     return {
       filename,
       url: blob.url,
     }
   },
-  
+
   async handleDelete({ filename }) {
     try {
       const { blobs } = await list({ token })
       const blob = blobs.find((b) => b.pathname === filename)
-      
+
       if (blob) {
         await del(blob.url, { token })
       }
@@ -32,7 +30,7 @@ export const vercelBlobAdapter = ({ token }: VercelBlobAdapterArgs): Adapter => 
       console.error('Error deleting from Vercel Blob:', error)
     }
   },
-  
+
   async generateURL({ filename }) {
     const { blobs } = await list({ token })
     const blob = blobs.find((b) => b.pathname === filename)
