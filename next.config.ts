@@ -51,9 +51,9 @@ const nextConfig: NextConfig = {
     }
 
     webpackConfig.plugins.push({
-      apply(compiler) {
-        compiler.hooks.normalModuleFactory.tap('NodeProtocolPlugin', (nmf) => {
-          nmf.hooks.beforeResolve.tap('NodeProtocolPlugin', (resolveData) => {
+      apply(compiler: any) {
+        compiler.hooks.normalModuleFactory.tap('NodeProtocolPlugin', (nmf: any) => {
+          nmf.hooks.beforeResolve.tap('NodeProtocolPlugin', (resolveData: any) => {
             if (resolveData.request.startsWith('node:')) {
               const moduleName = resolveData.request.slice(5)
               resolveData.request = moduleName
