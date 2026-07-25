@@ -119,12 +119,6 @@ const nextConfig: NextConfig = {
   },
   turbopack: {
     root: path.resolve(dirname),
-    rules: {
-      '*.css': {
-        loaders: ['ignore-loader'],
-        as: '*.js',
-      },
-    },
   },
 }
 
