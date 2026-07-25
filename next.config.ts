@@ -46,7 +46,7 @@ const nextConfig: NextConfig = {
 
     if (isServer) {
       webpackConfig.module.rules.push({
-        test: /\.css$/,
+        test: /react-image-crop.*\.css$/,
         use: 'null-loader',
       })
     }
