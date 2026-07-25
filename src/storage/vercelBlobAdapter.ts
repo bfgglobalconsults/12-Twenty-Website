@@ -6,7 +6,7 @@ interface VercelBlobAdapterArgs {
 }
 
 export const vercelBlobAdapter = ({ token }: VercelBlobAdapterArgs): any => ({
-  async handleUpload({ data, filename }) {
+  async handleUpload({ data, filename }: { data: any; filename: string }) {
     const blob = await put(filename, data, {
       access: 'public',
       token,
@@ -18,7 +18,7 @@ export const vercelBlobAdapter = ({ token }: VercelBlobAdapterArgs): any => ({
     }
   },
 
-  async handleDelete({ filename }) {
+  async handleDelete({ filename }: { filename: string }) {
     try {
       const { blobs } = await list({ token })
       const blob = blobs.find((b) => b.pathname === filename)
@@ -31,7 +31,7 @@ export const vercelBlobAdapter = ({ token }: VercelBlobAdapterArgs): any => ({
     }
   },
 
-  async generateURL({ filename }) {
+  async generateURL({ filename }: { filename: string }) {
     const { blobs } = await list({ token })
     const blob = blobs.find((b) => b.pathname === filename)
     return blob?.url || ''
