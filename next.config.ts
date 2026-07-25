@@ -40,6 +40,17 @@ const nextConfig: NextConfig = {
       '.mjs': ['.mts', '.mjs'],
     }
 
+    // Add CSS loader to handle CSS imports in server-side builds
+    webpackConfig.module = webpackConfig.module || {}
+    webpackConfig.module.rules = webpackConfig.module.rules || []
+
+    if (isServer) {
+      webpackConfig.module.rules.push({
+        test: /\.css$/,
+        use: 'null-loader',
+      })
+    }
+
     // Add plugin to handle node: protocol and block server-only imports on client
     webpackConfig.plugins = webpackConfig.plugins || []
 
