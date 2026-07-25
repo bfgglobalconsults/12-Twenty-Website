@@ -5,7 +5,7 @@ interface VercelBlobAdapterArgs {
   token: string
 }
 
-export const vercelBlobAdapter = ({ token }: VercelBlobAdapterArgs): Adapter => ({
+export const vercelBlobAdapter = ({ token }: VercelBlobAdapterArgs): any => ({
   async handleUpload({ data, filename }) {
     const blob = await put(filename, data, {
       access: 'public',
