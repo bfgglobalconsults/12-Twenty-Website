@@ -34,10 +34,7 @@ export default function Leadership() {
               <span className="text-xs border border-gray-300 px-3 py-1 rounded-full">RICS</span>
               <span className="text-xs border border-gray-300 px-3 py-1 rounded-full">CIOB</span>
             </div>
-            <p className="text-gray-600 leading-relaxed">
-              Institutional delivery, capital programmes, and board-level stakeholder governance
-              across Europe and the Middle East.
-            </p>
+           
           </div>
 
           <div className="bg-gray-50 rounded-3xl p-8">
@@ -48,10 +45,7 @@ export default function Leadership() {
               <span className="text-xs border border-gray-300 px-3 py-1 rounded-full">PMP</span>
               <span className="text-xs border border-gray-300 px-3 py-1 rounded-full">CMAA</span>
             </div>
-            <p className="text-gray-600 leading-relaxed">
-              Operational excellence, supply chain optimization, and large-scale programme delivery
-              across residential and commercial sectors.
-            </p>
+           
           </div>
 
           <div className="bg-gray-50 rounded-3xl p-8">
@@ -62,10 +56,7 @@ export default function Leadership() {
               <span className="text-xs border border-gray-300 px-3 py-1 rounded-full">CIOB</span>
               <span className="text-xs border border-gray-300 px-3 py-1 rounded-full">RICS</span>
             </div>
-            <p className="text-gray-600 leading-relaxed">
-              BIM integration, structural engineering oversight, and design coordination for complex
-              multi-disciplinary infrastructure projects.
-            </p>
+           
           </div>
 
           <div className="bg-gray-50 rounded-3xl p-8">
@@ -76,10 +67,7 @@ export default function Leadership() {
               <span className="text-xs border border-gray-300 px-3 py-1 rounded-full">PMP</span>
               <span className="text-xs border border-gray-300 px-3 py-1 rounded-full">MRICS</span>
             </div>
-            <p className="text-gray-600 leading-relaxed">
-              Commercial governance, contract strategy, risk allocation, and financial controls for
-              high-value capital projects.
-            </p>
+           
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <>
       <section
-        className="relative h-[120vh] md:h-[150vh] lg:h-[150vh] bg-cover bg-center"
+        className="relative h-[120vh] md:h-[150vh] lg:h-[160vh] bg-cover bg-center"
         style={{
           backgroundImage: 'url("/assets/hero-image.jpg")',
         }}
@@ -24,7 +24,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-block border border-coral-500 text-white px-4 py-2 rounded-full text-xs md:text-sm mb-6 backdrop-blur-sm"
+              className="inline-block border border-coral-500 text-white px-4 py-2 rounded-full text-xs md:text-sm mb-6 backdrop-blur-sm mt-[50px]"
             >
               ENTERPRISE INFRASTRUCTURE PARTNER
             </motion.span>
@@ -102,15 +102,15 @@ export default function Hero() {
                       <Image
                         src={`https://i.pravatar.cc/150?img=${i + 10}`}
                         alt="Client"
-                        width={48}
-                        height={48}
+                        width={55}
+                        height={55}
                         className="w-full h-full object-cover"
                       />
                     </motion.div>
                   ))}
                 </div>
                 <div>
-                  <p className="text-black font-semibold text-base md:text-lg">
+                  <p className="text-black font-semibold text-sm md:text-sm">
                     50K+ Happy Clients
                   </p>
                   <div className="flex items-center gap-1">
@@ -134,7 +134,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-black text-xs md:text-sm">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-black text-xs md:text-xs">
                 {['ISO Certified', 'BIM Enabled', '97% On-Time Delivery', 'Zero LTI Record'].map(
                   (text, i) => (
                     <motion.div

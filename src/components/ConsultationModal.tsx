@@ -79,9 +79,9 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto"
+            className="fixed inset-0 z-50 overflow-y-auto px-4 py-6 sm:px-6 sm:py-8"
           >
-            <div className="bg-white rounded-3xl max-w-4xl w-full p-8 md:p-12 relative my-8">
+            <div className="bg-white rounded-3xl max-w-4xl w-full p-8 md:p-12 relative my-2 mx-auto">
               {/* Close Button */}
               <button
                 onClick={onClose}
@@ -126,11 +126,10 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85D3F] text-gray-900"
                     >
                       <option value="">Select project type</option>
-                      <option value="construction">Construction Design & Management</option>
-                      <option value="residential">Residential & Infrastructure</option>
-                      <option value="roadworks">Roadworks & Civil Engineering</option>
-                      <option value="facility">Facility Maintenance</option>
-                      <option value="procurement">Materials Procurement</option>
+                      <option value="construction">Commercial</option>
+                      <option value="residential">Residential</option>
+                      <option value="roadworks">Industrial</option>
+                     
                     </select>
                   </div>
 
@@ -147,11 +146,10 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85D3F] text-gray-900"
                     >
                       <option value="">Select project stage</option>
-                      <option value="concept">Concept / Feasibility</option>
-                      <option value="design">Design Phase</option>
-                      <option value="pre-construction">Pre-Construction</option>
-                      <option value="construction">Active Construction</option>
-                      <option value="handover">Handover / Closeout</option>
+                      <option value="concept">Concept Design</option>
+                      <option value="design">Mid-build</option>
+                      <option value="pre-construction">Rennovation</option>
+                   
                     </select>
                   </div>
                 </div>
@@ -220,11 +218,11 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85D3F] text-gray-900"
                     >
                       <option value="">Select budget range</option>
-                      <option value="<50m">Under $50M</option>
-                      <option value="50-100m">$50M - $100M</option>
-                      <option value="100-250m">$100M - $250M</option>
-                      <option value="250-500m">$250M - $500M</option>
-                      <option value="500m+">$500M+</option>
+                      <option value="<50m">Under N50M</option>
+                      <option value="50-100m">N50M - N100M</option>
+                      <option value="100-250m">N100M - N250M</option>
+                      <option value="250-500m">N250M - N500M</option>
+                      <option value="500m+">N500M+</option>
                     </select>
                   </div>
                 </div>

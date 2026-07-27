@@ -107,7 +107,7 @@ export default function InsightsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-[#E85D3F] font-medium text-sm tracking-wide uppercase block mb-4"
+              className="text-[#E85D3F] font-medium text-sm tracking-wide uppercase block mb-4 mt-[50px]"
             >
               Resources
             </motion.span>
