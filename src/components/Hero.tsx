@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <>
       <section
-        className="relative h-[120vh] md:h-[150vh] lg:h-[160vh] bg-cover bg-center"
+        className="relative h-[160vh] md:h-[160vh] lg:h-[170vh] bg-cover bg-center"
         style={{
           backgroundImage: 'url("/assets/hero-image.jpg")',
         }}

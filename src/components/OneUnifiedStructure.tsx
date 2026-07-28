@@ -51,7 +51,7 @@ export default function OneUnifiedStructure() {
             className="relative rounded-3xl overflow-hidden h-[500px]"
           >
             <Image
-              src="/assets/construction-site.jpg"
+              src="/assets/construction-site.png"
               alt="Construction site"
               fill
               className="object-cover"
