@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import ConsultationModal from './ConsultationModal'
 
@@ -8,6 +9,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,19 +54,41 @@ export default function Navbar() {
 
             <div className="hidden md:flex items-center gap-8 text-white">
               <div className="relative group">
-                <a href="/services" className="flex items-center gap-1 hover:text-white/80">
+                <a
+                  href="/services"
+                  className={`flex items-center gap-1 transition-colors ${
+                    pathname === '/services'
+                      ? 'text-black font-semibold'
+                      : 'hover:text-white/80'
+                  }`}
+                >
                   Services
                 </a>
               </div>
-              <a href="/projects" className="hover:text-white/80">
+              <a
+                href="/projects"
+                className={`transition-colors ${
+                  pathname === '/projects' ? 'text-black font-semibold' : 'hover:text-white/80'
+                }`}
+              >
                 Projects
               </a>
               <div className="relative group">
-                <a href="/about" className="flex items-center gap-1 hover:text-white/80">
+                <a
+                  href="/about"
+                  className={`flex items-center gap-1 transition-colors ${
+                    pathname === '/about' ? 'text-black font-semibold' : 'hover:text-white/80'
+                  }`}
+                >
                   About
                 </a>
               </div>
-              <a href="#" className="hover:text-white/80">
+              <a
+                href="/insights"
+                className={`transition-colors ${
+                  pathname === '/insights' ? 'text-black font-semibold' : 'hover:text-white/80'
+                }`}
+              >
                 Insights
               </a>
             </div>
@@ -133,7 +157,12 @@ export default function Navbar() {
         <div className="relative h-full flex flex-col p-6 pt-28">
           <nav className="flex flex-col gap-4 text-white text-base flex-1 mt-8">
             <div className="flex items-center justify-between border-b border-white/20 pb-4">
-              <a href="/services" className="hover:text-white/80">
+              <a
+                href="/services"
+                className={`transition-colors ${
+                  pathname === '/services' ? 'text-black font-semibold' : 'hover:text-white/80'
+                }`}
+              >
                 Services
               </a>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -147,7 +176,12 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center justify-between pb-4">
-              <a href="/projects" className="hover:text-white/80">
+              <a
+                href="/projects"
+                className={`transition-colors ${
+                  pathname === '/projects' ? 'text-black font-semibold' : 'hover:text-white/80'
+                }`}
+              >
                 Projects
               </a>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,7 +195,12 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center justify-between border-b border-white/20 pb-4">
-              <a href="/about" className="hover:text-white/80">
+              <a
+                href="/about"
+                className={`transition-colors ${
+                  pathname === '/about' ? 'text-black font-semibold' : 'hover:text-white/80'
+                }`}
+              >
                 About
               </a>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -175,7 +214,12 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center justify-between pb-4">
-              <a href="/insights" className="hover:text-white/80">
+              <a
+                href="/insights"
+                className={`transition-colors ${
+                  pathname === '/insights' ? 'text-black font-semibold' : 'hover:text-white/80'
+                }`}
+              >
                 Insights
               </a>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
