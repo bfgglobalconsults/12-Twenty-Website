@@ -20,7 +20,7 @@ export default function AboutHero() {
             transition={{ duration: 0.6 }}
             className="inline-block border border-coral-500 text-coral-500 px-4 py-2 rounded-full text-sm mb-6 backdrop-blur-sm"
           >
-            Lorem ipsum dolor sit amet consectetur
+            Company Overview
           </motion.span>
 
           <motion.h1
@@ -38,9 +38,10 @@ export default function AboutHero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-white/90 text-base md:text-lg max-w-xl"
           >
-            Lorem ipsum dolor sit amet consectetur. Consequat diam ultrices pellentesque molestie
-            tempus vehicula accumsan at. Eget accumsan tempor eleifend bibendum. Tempor porttitor et
-            augue convallis molestie.
+            We are guided by a commitment to precision, innovation, and client-centric delivery. By
+            integrating advanced digital project management tools with battle-tested construction
+            expertise, we give our clients unparalleled visibility, control, and confidence at every
+            stage of their project from concept to completion.
           </motion.p>
         </div>
       </div>

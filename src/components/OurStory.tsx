@@ -20,7 +20,7 @@ export default function OurStory() {
           Our Story
         </motion.span>
 
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid gap-12 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}

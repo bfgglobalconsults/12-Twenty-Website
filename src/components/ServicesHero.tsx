@@ -20,7 +20,7 @@ export default function ServicesHero() {
             transition={{ duration: 0.6 }}
             className="inline-block border border-coral-500 text-coral-500 px-4 py-2 rounded-full text-sm mb-6 backdrop-blur-sm"
           >
-            Lorem ipsum dolor sit amet consectetur
+            Build with confidence
           </motion.span>
 
           <motion.h1
@@ -38,9 +38,8 @@ export default function ServicesHero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-white/90 text-base md:text-lg max-w-xl"
           >
-            Lorem ipsum dolor sit amet consectetur. Consequat diam ultrices pellentesque volutpat
-            tempus venenatis id scelerisque est. Eget arcu netus euismod bibendum. Tempor pretium
-            non augue convallis molestie.
+            12Twenty offers a comprehensive suite of project management services, digitally powered
+            and professionally delivered across all phases of the construction lifecycle.
           </motion.p>
         </div>
       </div>

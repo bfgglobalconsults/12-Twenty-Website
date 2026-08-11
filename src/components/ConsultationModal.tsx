@@ -126,10 +126,9 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85D3F] text-gray-900"
                     >
                       <option value="">Select project type</option>
-                      <option value="construction">Commercial</option>
-                      <option value="residential">Residential</option>
-                      <option value="roadworks">Industrial</option>
-                     
+                      <option value="commercial">Commercial Development</option>
+                      <option value="residential">Residential Construction</option>
+                      <option value="industrial">Industrial Development</option>
                     </select>
                   </div>
 
@@ -146,10 +145,10 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85D3F] text-gray-900"
                     >
                       <option value="">Select project stage</option>
-                      <option value="concept">Concept Design</option>
-                      <option value="design">Mid-build</option>
-                      <option value="pre-construction">Rennovation</option>
-                   
+                      <option value="planning">Concept/Planning </option>
+                      <option value="design">Design/Permitting </option>
+                      <option value="construction">Under Construction</option>
+                      <option value="renovation">Renovation/Remodel</option>
                     </select>
                   </div>
                 </div>

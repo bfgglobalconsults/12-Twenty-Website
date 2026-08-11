@@ -64,9 +64,7 @@ export default function ConsultationForm() {
                 <option value="">Select project type</option>
                 <option value="commercial">Commercial Development</option>
                 <option value="residential">Residential Construction</option>
-                <option value="infrastructure">Infrastructure</option>
-                <option value="civil">Civil Engineering</option>
-                <option value="maintenance">Facility Maintenance</option>
+                <option value="industrial">Industrial Development</option>
               </select>
             </div>
 
@@ -86,11 +84,10 @@ export default function ConsultationForm() {
                 required
               >
                 <option value="">Select project stage</option>
-                <option value="feasibility">Feasibility</option>
-                <option value="design">Design Phase</option>
-                <option value="procurement">Procurement</option>
-                <option value="construction">Construction</option>
-                <option value="handover">Handover</option>
+                <option value="planning">Concept/Planning </option>
+                <option value="design">Design/Permitting </option>
+                <option value="construction">Under Construction</option>
+                <option value="renovation">Renovation/Remodel</option>
               </select>
             </div>
           </div>
@@ -171,11 +168,11 @@ export default function ConsultationForm() {
                 required
               >
                 <option value="">Select budget range</option>
-                <option value="50m">$50M - $100M</option>
-                <option value="100m">$100M - $250M</option>
-                <option value="250m">$250M - $500M</option>
-                <option value="500m">$500M - $1B</option>
-                <option value="1b">$1B+</option>
+                <option value="<50m">Under N50M</option>
+                <option value="50-100m">N50M - N100M</option>
+                <option value="100-250m">N100M - N250M</option>
+                <option value="250-500m">N250M - N500M</option>
+                <option value="500m+">N500M+</option>
               </select>
             </div>
           </div>

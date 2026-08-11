@@ -20,7 +20,7 @@ export default function ProjectsHero() {
             transition={{ duration: 0.6 }}
             className="text-[#E85D3F] font-medium text-sm tracking-wide uppercase block mb-6"
           >
-            Lorem ipsum dolor sit amet consectetur
+            Building Smarter. Delivering Excellence
           </motion.span>
 
           <motion.h1
@@ -38,9 +38,10 @@ export default function ProjectsHero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-white/90 text-base md:text-lg mb-10 max-w-2xl"
           >
-            Lorem ipsum dolor sit amet consectetur. Consequat diam ultricies pellentesque volutpat
-            tempus venenatis at. Sed elerisque sed eget arcu netus susmod bibendum. Tempor pretium
-            non augue convallis molestie.
+            12Twenty is a premier construction project management company headquartered at Suite
+            H427 Ikota Shopping Complex VGC, Lagos. Since our founding in 2020, we have grown into a
+            trusted partner for large-scale commercial, industrial, and infrastructure development
+            projects across two continents.
           </motion.p>
         </div>
       </div>
