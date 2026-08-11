@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-coral-500: #ff6b4a;
+  --color-coral-600: #e85a3a;
+  --font-family-sans: var(--font-urbanist), system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    background: white;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family:
+      var(--font-urbanist),
+      system-ui,
+      -apple-system,
+      sans-serif;
+    margin: 0;
+    color: #1f2937;
+  }
+}
