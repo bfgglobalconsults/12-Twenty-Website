@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import Image from 'next/image'
 import ConsultationModal from './ConsultationModal'
+import Link from 'next/link'
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -74,6 +75,7 @@ export default function Hero() {
                   />
                 </svg>
               </motion.button>
+              <Link href="/projects">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -81,6 +83,7 @@ export default function Hero() {
               >
                 View Managed Projects
               </motion.button>
+              </Link>
             </motion.div>
 
             <motion.div

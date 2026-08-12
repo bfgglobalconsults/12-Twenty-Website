@@ -32,7 +32,7 @@ export default function WhyUs() {
       number: '4',
       title: 'Proven Delivery Scale',
       description:
-        'From $50M residential developments to $1B+ infrastructure corridors. We have the systems, teams, and capital partners to deliver at any scale.',
+        'From single-site residential developments to nationwide infrastructure corridors, we have the systems, teams, and capital partners to deliver at any scale.',
     },
     {
       number: '5',

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 
 export default function AboutUs() {
   const ref = useRef(null)
@@ -34,7 +35,7 @@ export default function AboutUs() {
               <br />
               End-to-End
               <br />
-              Accountability.
+              Delivery.
             </motion.h2>
 
             <motion.p
@@ -43,31 +44,33 @@ export default function AboutUs() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-gray-600 text-base lg:text-lg leading-relaxed"
             >
-              We are a full-service infrastructure delivery partner built for complexity. From
-              initial feasibility through design, procurement, construction and handover, we embed
-              certainty into every stage of the project lifecycle. Our integrated teams combine
-              technical depth with commercial rigor to deliver outcomes that meet schedule, budget
-              and quality benchmarks every time.
+              12Twenty is a full-service construction project management partner built for
+              complexity. From concept through design, procurement, execution and handover, we embed
+              precision and control into every stage of the project lifecycle. Our integrated teams
+              pair advanced digital project management tools with battle-tested construction
+              expertise, delivering on schedule, budget, and quality - across commercial,
+              industrial, and infrastructure.
             </motion.p>
-
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-6 py-3 border border-red-600 text-red-600 rounded-full hover:bg-red-600 hover:text-white transition-all duration-300 font-medium"
-            >
-              Learn more
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </motion.button>
+            <Link href="/about">
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-6 py-3 border border-red-600 text-red-600 rounded-full hover:bg-red-600 hover:text-white transition-all duration-300 font-medium"
+              >
+                Learn more
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </motion.button>
+            </Link>
           </div>
 
           {/* Right Image */}

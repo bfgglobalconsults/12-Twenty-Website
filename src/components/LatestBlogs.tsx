@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function LatestBlogs() {
   const blogs = [
@@ -53,12 +54,14 @@ export default function LatestBlogs() {
         </div>
 
         <div className="flex justify-center">
+          <Link href="/blogs">
           <button className="inline-flex items-center gap-2 px-8 py-3 border border-[#E85D3F] text-[#E85D3F] rounded-full hover:bg-[#E85D3F] hover:text-white transition-all duration-300 font-medium">
             View More
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ export default function TechnologyOperations() {
 
   const systems = [
     {
-      metric: '100%',
+      metric: 'Full',
       metricLabel: 'PROJECT BIM COVERAGE',
       title: 'BIM & 3D Coordination',
       description:
@@ -39,7 +39,7 @@ export default function TechnologyOperations() {
         'Executive dashboards, automated progress reporting, variance analysis, and stakeholder-ready board packs.',
     },
     {
-      metric: '$840M',
+      metric: 'Enterprise Scale',
       metricLabel: 'ANNUAL PROCUREMENT VOLUME',
       title: 'Procurement Intelligence',
       description:
@@ -56,15 +56,15 @@ export default function TechnologyOperations() {
 
   const metrics = [
     {
-      value: '15+',
+      value: '6+',
       label: 'Years Experience',
     },
     {
-      value: '30+',
+      value: '15+',
       label: 'Projects Managed',
     },
     {
-      value: '$2.4B',
+      value: 'Multi-Million',
       label: 'Managed Portfolio Value',
     },
     {
