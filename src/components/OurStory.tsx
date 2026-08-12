@@ -82,9 +82,9 @@ export default function OurStory() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
             {[
-              { value: '15+', label: 'Years Experience' },
-              { value: '30+', label: 'Projects Managed' },
-              { value: '$2.4B', label: 'Managed Portfolio Value' },
+              { value: '6+', label: 'Years Experience' },
+              { value: '15+', label: 'Projects Managed' },
+              { value: 'Multi-Million', label: 'Managed Portfolio Value' },
               { value: 'Multi-Sector', label: 'Delivery Capability' },
             ].map((stat, index) => (
               <motion.div

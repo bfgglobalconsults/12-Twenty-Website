@@ -4,7 +4,7 @@ export default function Leadership() {
   return (
     <section className="bg-white py-10 px-8">
       <div className="max-w-7xl mx-auto">
-        <span className="text-coral-500 text-sm font-semibold mb-6 block">Leadership</span>
+        <span className="text-coral-500 text-sm font-semibold mb-6 block">LEADERSHIP</span>
 
         <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
           Governed By Experience.

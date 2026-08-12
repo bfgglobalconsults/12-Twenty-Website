@@ -44,7 +44,7 @@ export default function Newsletter() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
-              className="w-full px-6 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-white text-gray-900"
+              className="w-full px-6 py-4 rounded-full border-white focus:outline-none focus:ring-2 focus:ring-white text-gray-900"
               required
             />
           </div>

@@ -98,8 +98,8 @@ export default function WhyI2Twenty() {
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Proven Delivery Scale</h3>
             <p className="text-gray-600 leading-relaxed">
-              From $50M residential developments to $1B+ infrastructure corridors. We have the
-              systems, teams, and capital partners to deliver at any scale.
+              From single-site residential developments to nationwide infrastructure corridors, we
+              have the systems, teams, and capital partners to deliver at any scale.
             </p>
           </div>
 

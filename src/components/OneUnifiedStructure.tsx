@@ -32,15 +32,16 @@ export default function OneUnifiedStructure() {
               <br />
               End-to-End
               <br />
-              Accountability.
+              Delivery.
             </h2>
 
             <p className="text-gray-600 text-lg leading-relaxed">
-              We are a full-service infrastructure delivery partner built for complexity. From
-              initial feasibility through design, procurement, construction and handover, we embed
-              certainty into every stage of the project lifecycle. Our integrated teams combine
-              technical depth with commercial rigor, to deliver outcomes that meet schedule, budget
-              and quality benchmarks every time.
+              12Twenty is a full-service construction project management partner built for
+              complexity. From concept through design, procurement, execution and handover, we embed
+              precision and control into every stage of the project lifecycle. Our integrated teams
+              pair advanced digital project management tools with battle-tested construction
+              expertise, delivering on schedule, budget, and quality - across commercial,
+              industrial, and infrastructure.
             </p>
           </motion.div>
 

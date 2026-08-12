@@ -155,10 +155,10 @@ export default function Footer() {
               </li>
               <li className="pt-2">
                 <a
-                  href="mailto:info@12twenty.com"
+                  href="mailto:info@12twentygroup.com"
                   className="text-white hover:text-white/80 transition-colors text-sm"
                 >
-                  info@12twenty.com
+                  info@12twentygroup.com
                 </a>
               </li>
               <li>
@@ -166,7 +166,7 @@ export default function Footer() {
                   href="tel:+2340000000000"
                   className="text-white hover:text-white/80 transition-colors text-sm"
                 >
-                  +234 000 0000 0000
+                  +234 8161210190
                 </a>
               </li>
             </ul>

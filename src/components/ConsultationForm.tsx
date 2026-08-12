@@ -29,7 +29,7 @@ export default function ConsultationForm() {
   }
 
   return (
-    <section className="bg-white py-10 px-6 lg:py-12 lg:px-12">
+    <section className="bg-white py-10 px-6 lg:py-6 lg:px-12">
       <div className="max-w-5xl mx-auto">
         <span className="text-[#E85D3F] font-medium text-sm tracking-wide uppercase block text-center mb-6">
           Start A Consultation
