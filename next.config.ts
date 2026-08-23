@@ -2,6 +2,8 @@ import { withPayload } from '@payloadcms/next/withPayload'
 import type { NextConfig } from 'next'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import webpack from 'webpack'
+
 
 const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
@@ -49,17 +51,7 @@ const nextConfig: NextConfig = {
     // Add plugin to handle node: protocol and block server-only imports on client
     webpackConfig.plugins = webpackConfig.plugins || []
 
-    if (!isServer) {
-      const webpack = require('webpack')
-
-      // Block entire problem packages on client side
-      webpackConfig.plugins.push(
-        new webpack.NormalModuleReplacementPlugin(
-          /@payloadcms\/(storage-vercel-blob|plugin-cloud-storage)/,
-          path.resolve(dirname, 'src/lib/VercelBlobClientUploadHandlerStub.tsx'),
-        ),
-      )
-    }
+   
 
     webpackConfig.plugins.push({
       apply(compiler: any) {
