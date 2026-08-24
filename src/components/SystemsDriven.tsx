@@ -183,15 +183,15 @@ export default function SystemsDriven() {
           <span className="text-white text-sm font-semibold mb-6 block">Performance Metrics</span>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white rounded-2xl p-8">
-              <div className="text-5xl font-bold text-coral-500 mb-2">15+</div>
+              <div className="text-5xl font-bold text-coral-500 mb-2">6+</div>
               <div className="text-gray-600">Years Experience</div>
             </div>
             <div className="bg-white rounded-2xl p-8">
-              <div className="text-5xl font-bold text-coral-500 mb-2">30+</div>
+              <div className="text-5xl font-bold text-coral-500 mb-2">15+</div>
               <div className="text-gray-600">Projects Managed</div>
             </div>
             <div className="bg-white rounded-2xl p-8">
-              <div className="text-5xl font-bold text-coral-500 mb-2">$2.4B</div>
+              <div className="text-5xl font-bold text-coral-500 mb-2">Multi-Million</div>
               <div className="text-gray-600">Managed Portfolio Value</div>
             </div>
             <div className="bg-white rounded-2xl p-8">
