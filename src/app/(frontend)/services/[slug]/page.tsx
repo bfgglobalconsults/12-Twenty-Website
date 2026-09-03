@@ -17,11 +17,12 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   const payload = await getPayloadHMR({ config })
   const services = await payload.find({
     collection: 'services',
-    where: { slug: { equals: params.slug } },
+    where: { slug: { equals: slug } },
     limit: 1,
   })
 
@@ -37,11 +38,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function ServiceDetail({ params }: { params: { slug: string } }) {
+export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   const payload = await getPayloadHMR({ config })
   const services = await payload.find({
     collection: 'services',
-    where: { slug: { equals: params.slug } },
+    where: { slug: { equals: slug } },
     limit: 1,
   })
 
