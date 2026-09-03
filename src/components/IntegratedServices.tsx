@@ -11,7 +11,7 @@ interface ServiceDoc {
   image?: {
     url: string
   }
-  deliverables?: Array<{ item: string }>
+  deliverables?: Array<{ title: string; description?: string | null; id?: string | null }> | null
 }
 
 export default async function IntegratedServices() {
@@ -78,10 +78,10 @@ export default async function IntegratedServices() {
                     Key Deliverables
                   </p>
                   <ul className="space-y-2">
-                    {service.deliverables.map((deliverable: any, idx: number) => (
+                    {service.deliverables.map((deliverable, idx: number) => (
                       <li key={idx} className="text-sm text-gray-600 flex items-start">
                         <span className="text-coral-500 mr-2">—</span>
-                        {deliverable.item}
+                        {deliverable.title}
                       </li>
                     ))}
                   </ul>
