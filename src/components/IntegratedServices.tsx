@@ -1,64 +1,28 @@
 import Image from 'next/image'
+import Link from 'next/link'
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
 
-export default function IntegratedServices() {
-  const services = [
-    {
-      title: 'Construction Design & Management',
-      image: '/assets/construction-icon.png',
-      description:
-        'End-to-end CDM coordination from planning through execution. We manage design reviews, risk registers, contractor oversight and compliance documentation with systematic precision.',
-      deliverables: ['BIM Models', 'Design Programs', 'Cost Plans', 'Compliance Reports'],
-    },
-    {
-      title: 'Residential Construction & Infrastructure',
-      image: '/assets/residential-icon.png',
-      description:
-        'Luxury residential, mixed-use and urban regeneration projects delivered to exacting standards. We align stakeholder expectations with buildability and long-term asset value.',
-      deliverables: [
-        'Site Reports',
-        'Handover Packages',
-        'Infrastucture Sign-off',
-        '12-month defects support',
-      ],
-    },
-    {
-      title: 'Roadworks & Civil Engineering',
-      image: '/assets/road-icon.png',
-      description:
-        'Highways, bridges, utilities, and earthworks delivered under tight regulatory frameworks. We specialize in phased delivery that minimizes disruption to existing infrastructure.',
-      deliverables: [
-        'As-built Drawings',
-        'Materials Testing Reports',
-        'Structural Inspection Certificates',
-        
-      ],
-    },
-    {
-      title: 'Facility Maintenance',
-      image: '/assets/facility-icon.png',
-      description:
-        'Planned and reactive maintenance programs for commercial, industrial and institutional estates. Our CMMS-driven approach ensures uptime, compliance and cost predictability.',
-      deliverables: [
-        'PPM Schedules',
-        'CMMMS Reports',
-        'Compliance Certificates',
-        'Condition Surveys',
-      ],
-    },
-    {
-      title: 'Materials Procurement',
-      image: '/assets/material-icon.png',
-      description:
-        'Strategic sourcing and supply chain management for construction materials. We negotiate volume contracts, validate quality assurance and coordinate just-in-time logistics.',
-      deliverables: [
-        'Materials Scheduled',
-        'Delivery Trackers',
-        'Supplier Contracts',
-        'Quality Certificates',
-        'Procurement Cost Reports',
-      ],
-    },
-  ]
+interface ServiceDoc {
+  id: string
+  title: string
+  slug: string
+  shortDescription: string
+  image?: {
+    url: string
+  }
+  deliverables?: Array<{ title: string; description?: string | null; id?: string | null }> | null
+}
+
+export default async function IntegratedServices() {
+  const payload = await getPayload({ config: configPromise })
+
+  const services = await payload.find({
+    collection: 'services',
+    where: { featured: { equals: true } },
+    sort: 'order',
+    limit: 10,
+  })
 
   return (
     <section className="bg-[#14212D] py-20 rounded-2xl my-4 px-8">
@@ -72,36 +36,58 @@ export default function IntegratedServices() {
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-3xl p-8">
-              <div className="mb-6">
-               
-                  <Image
-                                  src={service.image}
-                                  alt={service.title}
-                                  width={48}
-                                  height={48}
-                                  className="w-12 h-12"
-                                />
+          {services.docs.map((service: ServiceDoc) => (
+            <Link
+              key={service.id}
+              href={`/services/${service.slug}`}
+              className="bg-white rounded-3xl p-8 hover:shadow-xl transition-shadow duration-300 relative group"
+            >
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  {service.image && typeof service.image !== 'string' && (
+                    <Image
+                      src={service.image.url}
+                      alt={service.title}
+                      width={48}
+                      height={48}
+                      className="w-12 h-12"
+                    />
+                  )}
+                </div>
+                <svg
+                  className="w-6 h-6 text-[#F05C36] group-hover:translate-x-1 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
               </div>
 
               <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
+              <p className="text-gray-600 leading-relaxed mb-6">{service.shortDescription}</p>
 
-              <div className="border-t border-[#F05C36] pt-6">
-                <p className="text-xs text-gray-500 font-semibold mb-3 uppercase">
-                  Key Deliverables
-                </p>
-                <ul className="space-y-2">
-                  {service.deliverables.map((deliverable, idx) => (
-                    <li key={idx} className="text-sm text-gray-600 flex items-start">
-                      <span className="text-coral-500 mr-2">—</span>
-                      {deliverable}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+              {service.deliverables && service.deliverables.length > 0 && (
+                <div className="border-t border-[#F05C36] pt-6">
+                  <p className="text-xs text-gray-500 font-semibold mb-3 uppercase">
+                    Key Deliverables
+                  </p>
+                  <ul className="space-y-2">
+                    {service.deliverables.map((deliverable, idx: number) => (
+                      <li key={idx} className="text-sm text-gray-600 flex items-start">
+                        <span className="text-coral-500 mr-2">—</span>
+                        {deliverable.title}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </Link>
           ))}
         </div>
       </div>

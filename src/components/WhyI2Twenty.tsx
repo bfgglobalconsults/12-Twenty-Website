@@ -27,10 +27,10 @@ export default function WhyI2Twenty() {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Unified Accountability</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Integrity</h3>
             <p className="text-gray-600 leading-relaxed">
-              A single point of responsibility across design, procurement, construction, and
-              handover. No gaps. No blame. No surprises.
+              We operate with full transparency and ethical accountability in every engagement.
+              Honesty and trust are the foundation of every client relationship we build.
             </p>
           </div>
 
@@ -50,10 +50,10 @@ export default function WhyI2Twenty() {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Technical & Safety Excellence</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Innovation</h3>
             <p className="text-gray-600 leading-relaxed">
-              ISO-certified processes, zero-tolerance safety culture, and technical governance that
-              meets the most demanding institutional standards.
+              We leverage cutting-edge digital tools to modernize how projects are planned and
+              delivered. Technology drives our efficiency and precision.
             </p>
           </div>
 
@@ -73,10 +73,10 @@ export default function WhyI2Twenty() {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Financial Transparency</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Excellence</h3>
             <p className="text-gray-600 leading-relaxed">
-              Real-time cost tracking, open-book reporting, and commercial governance that protects
-              investor confidence and board-level oversight.
+              We hold ourselves to the highest standards of quality and professionalism. Every
+              project is an opportunity to exceed expectations.
             </p>
           </div>
 
@@ -96,10 +96,10 @@ export default function WhyI2Twenty() {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Proven Delivery Scale</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Collaboration</h3>
             <p className="text-gray-600 leading-relaxed">
-              From single-site residential developments to nationwide infrastructure corridors, we
-              have the systems, teams, and capital partners to deliver at any scale.
+              We build strong, long-term partnerships with clients, contractors, and communities.
+              Success is always a shared journey.
             </p>
           </div>
 
@@ -119,10 +119,10 @@ export default function WhyI2Twenty() {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Lifecycle Reliability</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Safety First</h3>
             <p className="text-gray-600 leading-relaxed">
-              We design and deliver with the full asset lifecycle in mind — from operational
-              efficiency through to end-of-life planning and circular material recovery.
+              Every decision prioritizes the well-being of our people, partners, and public. Safety
+              is not a checkbox — it is a core principle.
             </p>
           </div>
         </div>
