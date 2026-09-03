@@ -39,15 +39,15 @@ export default function OurStory() {
             className="space-y-6"
           >
             <p className="text-gray-600 text-lg leading-relaxed">
-              I2 Twenty was founded on a simple conviction: construction delivery should not be
+              12Twenty was founded in 2022 on a single conviction: project delivery should not be
               fragmented. For decades, the industry has suffered from siloed accountability — where
               designers, contractors, and consultants operate in isolation, passing risk downstream
-              without ownership.
+              without ownership. We solve this by managing projects under an unified structure.
             </p>
             <p className="text-gray-600 text-lg leading-relaxed">
-              We solve this by managing projects under one unified structure. A single point of
-              accountability from concept to completion, backed by integrated teams, transparent
-              reporting, and systems-driven operational control.
+              As part of our accountability framework, we combine bold thinking by integrating
+              modern technology, transparent reporting, and system-driven operations from inception
+              to completion.
             </p>
           </motion.div>
         </div>
@@ -60,9 +60,9 @@ export default function OurStory() {
         >
           <span className="text-coral-500 text-sm font-semibold mb-6 block">Our Philosophy</span>
           <p className="text-gray-600 text-lg max-w-4xl leading-relaxed">
-            Our philosophy is rooted in lifespan thinking. Every decision we make considers the
-            long-term performance, maintainability, and asset value of the infrastructure we
-            deliver. We do not simply build. We engineer outcomes that endure.
+            Our philosophy is rooted in lifecycle thinking. Every decision we make considers the
+            long-term performance, durability, and whole-life value of the infrastructure we
+            deliver.
           </p>
         </motion.div>
 
@@ -74,10 +74,12 @@ export default function OurStory() {
           <div className="bg-[#14212D] rounded-2xl p-3 my-4">
             <h3 className="text-3xl font-bold mb-8 text-[#F05C36]">Integrated Delivery Model</h3>
             <p className="text-white/90 text-lg mb-12 max-w-4xl leading-relaxed">
-              Our Integrated Delivery Model combines project management, design coordination,
-              procurement intelligence, site supervision, and facility planning into one governed
-              program. This eliminates the traditional gaps between phases and ensures continuity of
-              knowledge, accountability, and quality.
+              We are not simply building delivery channels. We are creating a fully integrated
+              delivery model for a single construction company that delivers projects across the
+              entire spectrum — commercial, industrial, residential, and infrastructure. Our unified
+              structure ensures every stakeholder, from owner to subcontractor, operates under one
+              accountability system with clear visibility, transparent reporting, and system-driven
+              operations from inception to completion.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">

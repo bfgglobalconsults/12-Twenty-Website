@@ -74,6 +74,7 @@ export interface Config {
     insights: Insight;
     'consultation-requests': ConsultationRequest;
     'contact-submissions': ContactSubmission;
+    services: Service;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +89,7 @@ export interface Config {
     insights: InsightsSelect<false> | InsightsSelect<true>;
     'consultation-requests': ConsultationRequestsSelect<false> | ConsultationRequestsSelect<true>;
     'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -342,6 +344,79 @@ export interface ContactSubmission {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: string;
+  title: string;
+  slug: string;
+  /**
+   * Icon identifier for the service card
+   */
+  icon?: string | null;
+  /**
+   * Brief description shown on services listing page
+   */
+  shortDescription: string;
+  featured?: boolean | null;
+  /**
+   * Lower numbers appear first
+   */
+  order?: number | null;
+  /**
+   * Main image displayed on the service detail page
+   */
+  heroImage?: (string | null) | Media;
+  /**
+   * Detailed description shown on individual service page
+   */
+  fullDescription?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  keyFeatures?:
+    | {
+        feature: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  benefits?:
+    | {
+        benefit: string;
+        id?: string | null;
+      }[]
+    | null;
+  process?:
+    | {
+        stepNumber: number;
+        stepTitle: string;
+        stepDescription?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Projects showcasing this service
+   */
+  relatedProjects?: (string | Project)[] | null;
+  ctaText?: string | null;
+  ctaLink?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -391,6 +466,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'contact-submissions';
         value: string | ContactSubmission;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: string | Service;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -621,6 +700,46 @@ export interface ContactSubmissionsSelect<T extends boolean = true> {
   message?: T;
   status?: T;
   assignedTo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  icon?: T;
+  shortDescription?: T;
+  featured?: T;
+  order?: T;
+  heroImage?: T;
+  fullDescription?: T;
+  keyFeatures?:
+    | T
+    | {
+        feature?: T;
+        description?: T;
+        id?: T;
+      };
+  benefits?:
+    | T
+    | {
+        benefit?: T;
+        id?: T;
+      };
+  process?:
+    | T
+    | {
+        stepNumber?: T;
+        stepTitle?: T;
+        stepDescription?: T;
+        id?: T;
+      };
+  relatedProjects?: T;
+  ctaText?: T;
+  ctaLink?: T;
   updatedAt?: T;
   createdAt?: T;
 }

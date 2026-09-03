@@ -13,6 +13,7 @@ import { Team } from './collections/Team'
 import { Insights } from './collections/Insights'
 import { ConsultationRequests } from './collections/ConsultationRequests'
 import { ContactSubmissions } from './collections/ContactSubmissions'
+import { Services } from './collections/Services'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,7 +25,16 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Projects, Team, Insights, ConsultationRequests, ContactSubmissions],
+  collections: [
+    Users,
+    Media,
+    Projects,
+    Team,
+    Insights,
+    ConsultationRequests,
+    ContactSubmissions,
+    Services,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -34,14 +44,16 @@ export default buildConfig({
     url: process.env.DATABASE_URL || '',
   }),
   sharp,
-  plugins: [
-    vercelBlobStorage({
-      collections: {
-        media: {
-          disablePayloadAccessControl: true,
-        },
-      },
-      token: process.env.BLOB_READ_WRITE_TOKEN || '',
-    }),
-  ],
+  plugins: process.env.BLOB_READ_WRITE_TOKEN
+    ? [
+        vercelBlobStorage({
+          collections: {
+            media: {
+              access: 'private',
+            },
+          },
+          token: process.env.BLOB_READ_WRITE_TOKEN,
+        }),
+      ]
+    : [],
 })

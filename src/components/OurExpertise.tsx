@@ -1,66 +1,25 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-export default function OurExpertise() {
+interface Service {
+  id: string
+  title: string
+  slug: string
+  image?: {
+    url: string
+  }
+  shortDescription: string
+  deliverables?: Array<{ item: string }>
+}
+
+export default function OurExpertise({ services }: { services: Service[] }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-  const services = [
-    {
-      image: '/assets/construction-icon.png',
-      title: 'Construction Design & Management',
-      description:
-        'End-to-end CDM coordination from planning through execution. We manage design reviews, risk registers, contractor oversight and compliance documentation with systematic precision.',
-      outputs: ['BIM Models', 'Cost Plans', 'Design Programs', 'Compliance Reports'],
-    },
-    {
-      image: '/assets/residential-icon.png',
-      title: 'Residential Construction & Infrastructure',
-      description:
-        'Luxury residential, mixed-use and urban regeneration projects delivered to exacting standards. We align stakeholder expectations with buildability and long-term asset value.',
-      outputs: [
-        'Site Reports',
-        'Infrastructure Sign-off',
-        'Handover Packages',
-        '12-month defects support',
-      ],
-    },
-    {
-      image: '/assets/road-icon.png',
-      title: 'Roadworks & Civil Engineering',
-      description:
-        'Highways, bridges, utilities, and earthworks delivered under tight regulatory frameworks. We specialize in phased delivery that minimizes disruption to existing infrastructure.',
-      outputs: [
-        'As-built Drawings',
-        'Structural Inspection Certificates',
-        'Materials Testing Reports',
-      ],
-    },
-    {
-      image: '/assets/facility-icon.png',
-      title: 'Facility Maintenance',
-      description:
-        'Planned and reactive maintenance programs for commercial, industrial and institutional estates. Our CMMS-driven approach ensures uptime, compliance and cost predictability.',
-      outputs: ['PPM Schedules', 'Compliance Certificates', 'CMMS Reports', 'Condition Surveys'],
-    },
-    {
-      image: '/assets/material-icon.png',
-      title: 'Materials Procurement',
-      description:
-        'Strategic sourcing and supply chain management for construction materials. We negotiate volume contracts, validate quality assurance and coordinate just-in-time logistics.',
-      outputs: [
-        'Materials Schedule',
-        'Supplier Contracts',
-        'Procurement Cost Reports',
-        'Delivery Trackers',
-        'Quality Certificates',
-      ],
-    },
-  ]
 
   return (
     <section ref={ref} className="bg-[#14212D] rounded-xl py-20 px-6 lg:py-12 lg:px-12 mb-12">
@@ -88,47 +47,67 @@ export default function OurExpertise() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <motion.div
-              key={index}
+              key={service.id}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 * index }}
               whileHover={{ y: -8 }}
               className="bg-white rounded-3xl p-8 flex flex-col h-full"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + 0.1 * index }}
-                className="mb-6"
-              >
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  width={48}
-                  height={48}
-                  className="w-12 h-12"
-                />
-              </motion.div>
+              <Link href={`/services/${service.slug}`} className="flex flex-col h-full group">
+                <div className="flex justify-between items-start mb-6">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.2 + 0.1 * index }}
+                  >
+                    {service.image && (
+                      <Image
+                        src={service.image.url}
+                        alt={service.title}
+                        width={48}
+                        height={48}
+                        className="w-12 h-12"
+                      />
+                    )}
+                  </motion.div>
+                  <svg
+                    className="w-6 h-6 text-[#E85D3F] group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
 
-              <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
-                {service.description}
-              </p>
-
-              <div className="border-t border-gray-200 pt-4">
-                <p className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-3">
-                  KEY OUTPUTS
+                <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
+                  {service.shortDescription}
                 </p>
-                <ul className="grid grid-cols-2 gap-2">
-                  {service.outputs.map((output, idx) => (
-                    <li key={idx} className="text-xs text-gray-700 flex items-start">
-                      <span className="text-[#E85D3F] mr-2">●</span>
-                      <span>{output}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+
+                {service.deliverables && service.deliverables.length > 0 && (
+                  <div className="border-t border-gray-200 pt-4">
+                    <p className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-3">
+                      KEY OUTPUTS
+                    </p>
+                    <ul className="grid grid-cols-2 gap-2">
+                      {service.deliverables.map((deliverable, idx) => (
+                        <li key={idx} className="text-xs text-gray-700 flex items-start">
+                          <span className="text-[#E85D3F] mr-2">●</span>
+                          <span>{deliverable.item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </Link>
             </motion.div>
           ))}
         </div>

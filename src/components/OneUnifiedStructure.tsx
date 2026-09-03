@@ -12,7 +12,7 @@ export default function OneUnifiedStructure() {
   return (
     <section ref={ref} className="bg-white text-gray-900 py-20 px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-4 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -24,7 +24,7 @@ export default function OneUnifiedStructure() {
               transition={{ duration: 0.6 }}
               className="text-coral-500 text-sm font-semibold mb-6 block"
             >
-              About Us
+             Company Overview
             </motion.span>
 
             <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
@@ -36,12 +36,17 @@ export default function OneUnifiedStructure() {
             </h2>
 
             <p className="text-gray-600 text-lg leading-relaxed">
-              12Twenty is a full-service construction project management partner built for
-              complexity. From concept through design, procurement, execution and handover, we embed
-              precision and control into every stage of the project lifecycle. Our integrated teams
-              pair advanced digital project management tools with battle-tested construction
-              expertise, delivering on schedule, budget, and quality - across commercial,
-              industrial, and infrastructure.
+              12Twenty is a premier construction project management company headquartered at Suite
+              H427 Ikota Shopping Complex VGC, Lagos. Since our founding in 2022, we have grown into
+              a trusted partner for large-scale commercial, industrial, and infrastructure
+              development projects across two continents.
+            </p>
+
+            <p className="text-gray-600 text-lg leading-relaxed">
+              We are guided by a commitment to precision, innovation, and client-centric delivery.
+              By integrating advanced digital project management tools with battle-tested
+              construction expertise, we give our clients unparalleled visibility, control, and
+              confidence at every stage of their project from concept to completion.
             </p>
           </motion.div>
 
