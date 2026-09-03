@@ -401,8 +401,28 @@ export interface Service {
   process?:
     | {
         stepNumber: number;
-        stepTitle: string;
-        stepDescription?: string | null;
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Capabilities that drive every project forward
+   */
+  capabilities?:
+    | {
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Clear, coordinated outputs section
+   */
+  deliverables?:
+    | {
+        title: string;
+        description?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -733,8 +753,22 @@ export interface ServicesSelect<T extends boolean = true> {
     | T
     | {
         stepNumber?: T;
-        stepTitle?: T;
-        stepDescription?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  capabilities?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  deliverables?:
+    | T
+    | {
+        title?: T;
+        description?: T;
         id?: T;
       };
   relatedProjects?: T;

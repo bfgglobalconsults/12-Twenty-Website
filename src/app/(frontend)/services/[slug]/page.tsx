@@ -52,45 +52,47 @@ export default async function ServiceDetail({ params }: { params: { slug: string
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center">
-        {service.heroImage && typeof service.heroImage !== 'string' && (
-          <div className="absolute inset-0">
-            <Image
-              src={service.heroImage.url || ''}
-              alt={service.heroImage.alt || ''}
-              fill
-              className="object-cover opacity-20"
-            />
-          </div>
-        )}
-        <div className="relative z-10 text-center px-4 max-w-4xl">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">{service.title}</h1>
-          <p className="text-xl text-gray-700">{service.shortDescription}</p>
+      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-[#D4572A] text-sm font-medium mb-4 uppercase tracking-wide">
+            Construction Project Management
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            {service.title}
+          </h1>
+          {service.shortDescription && (
+            <p className="text-lg text-gray-700 leading-relaxed">{service.shortDescription}</p>
+          )}
         </div>
       </section>
 
-      {/* Description Section */}
-      {service.fullDescription && (
-        <section className="py-20 px-4 max-w-5xl mx-auto">
-          <div
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: service.fullDescription as any }}
-          />
+      {/* Hero Image */}
+      {service.heroImage && typeof service.heroImage !== 'string' && (
+        <section className="px-4 sm:px-6 lg:px-8 pb-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="relative h-[400px] rounded-lg overflow-hidden">
+              <Image
+                src={service.heroImage.url || ''}
+                alt={service.heroImage.alt || ''}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </section>
       )}
 
-      {/* Key Features */}
+      {/* Stats/Key Metrics */}
       {service.keyFeatures && service.keyFeatures.length > 0 && (
-        <section className="py-20 px-4 bg-gray-50">
+        <section className="px-4 sm:px-6 lg:px-8 pb-16">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-12">Key Features</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {service.keyFeatures.map((item, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                  <h3 className="text-xl font-semibold mb-2">{item.feature}</h3>
-                  {item.description && <p className="text-gray-700">{item.description}</p>}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {service.keyFeatures.slice(0, 4).map((item, index) => (
+                <div key={index} className="bg-[#D4572A] text-white p-6 rounded-lg">
+                  <div className="text-3xl font-bold mb-2">{item.feature}</div>
+                  {item.description && <p className="text-sm opacity-90">{item.description}</p>}
                 </div>
               ))}
             </div>
@@ -98,23 +100,36 @@ export default async function ServiceDetail({ params }: { params: { slug: string
         </section>
       )}
 
+      {/* Full Description */}
+      {service.fullDescription && (
+        <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div
+              className="prose prose-lg max-w-none text-gray-700"
+              dangerouslySetInnerHTML={{ __html: service.fullDescription as any }}
+            />
+          </div>
+        </section>
+      )}
+
       {/* Process Steps */}
       {service.process && service.process.length > 0 && (
-        <section className="py-20 px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-12">Our Process</h2>
-            <div className="space-y-8">
+        <section className="px-4 py-16 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center justify-between mb-12">
               {service.process
                 .sort((a, b) => (a.stepNumber || 0) - (b.stepNumber || 0))
                 .map((step, index) => (
-                  <div key={index} className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                      {step.stepNumber}
+                  <div key={index} className="flex items-center">
+                    <div className="flex flex-col items-center">
+                      <div className="w-16 h-16 bg-[#D4572A] text-white rounded-full flex items-center justify-center font-bold text-xl mb-2">
+                        {step.stepNumber}
+                      </div>
+                      <p className="text-sm font-medium text-center max-w-[100px]">{step.title}</p>
                     </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold mb-2">{step.title}</h3>
-                      {step.description && <p className="text-gray-700">{step.description}</p>}
-                    </div>
+                    {index < service.process!.length - 1 && (
+                      <div className="w-12 h-0.5 bg-gray-300 mx-2" />
+                    )}
                   </div>
                 ))}
             </div>
@@ -122,44 +137,78 @@ export default async function ServiceDetail({ params }: { params: { slug: string
         </section>
       )}
 
-      {/* Benefits */}
-      {service.benefits && service.benefits.length > 0 && (
-        <section className="py-20 px-4 bg-gray-50">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-12">Benefits</h2>
-            <ul className="space-y-4">
-              {service.benefits.map((benefit, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <svg
-                    className="w-6 h-6 text-orange-600 flex-shrink-0 mt-1"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-lg text-gray-700">{benefit.benefit}</span>
-                </li>
+      {/* Capabilities Section */}
+      {service.capabilities && service.capabilities.length > 0 && (
+        <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
+              Capabilities that drive every project forward.
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {service.capabilities.map((item, index) => (
+                <div key={index} className="flex gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-10 h-10 bg-[#FFF5F2] text-[#D4572A] rounded-full flex items-center justify-center font-bold">
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                    {item.description && (
+                      <p className="text-gray-600 text-sm">{item.description}</p>
+                    )}
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Deliverables Section */}
+      {service.deliverables && service.deliverables.length > 0 && (
+        <section className="px-4 py-16 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto bg-[#D4572A] rounded-2xl p-8 md:p-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Clear, coordinated outputs.
+            </h2>
+            <p className="text-white opacity-90 mb-12">
+              Every deliverable is designed to keep your project on track and stakeholders aligned.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              {service.deliverables.map((item, index) => (
+                <div key={index} className="bg-white rounded-lg p-6">
+                  <div className="w-10 h-10 bg-[#FFF5F2] text-[#D4572A] rounded flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                  {item.description && <p className="text-gray-600 text-sm">{item.description}</p>}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       )}
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-orange-500 to-orange-600 text-white text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold mb-6">Ready to get started?</h2>
-          <p className="text-xl mb-8">Let's bring your vision to life</p>
-          <Link
-            href={service.ctaLink || '/contact'}
-            className="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition"
-          >
-            {service.ctaText || 'Get Started'}
-          </Link>
+      <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-4">
+            <span className="text-gray-600">All Services</span>
+            <Link
+              href={service.ctaLink || '/contact'}
+              className="bg-[#D4572A] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#B94622] transition"
+            >
+              {service.ctaText || 'REQUEST PROPOSAL OR DISCOVERY CALL'}
+            </Link>
+          </div>
         </div>
       </section>
     </div>

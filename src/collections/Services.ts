@@ -117,12 +117,52 @@ export const Services: CollectionConfig = {
           required: true,
         },
         {
-          name: 'stepTitle',
+          name: 'title',
+          type: 'text',
+          required: true,
+          label: 'Step Title',
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          label: 'Step Description',
+        },
+      ],
+    },
+    {
+      name: 'capabilities',
+      type: 'array',
+      label: 'Capabilities',
+      admin: {
+        description: 'Capabilities that drive every project forward',
+      },
+      fields: [
+        {
+          name: 'title',
           type: 'text',
           required: true,
         },
         {
-          name: 'stepDescription',
+          name: 'description',
+          type: 'textarea',
+        },
+      ],
+    },
+    {
+      name: 'deliverables',
+      type: 'array',
+      label: 'Deliverables',
+      admin: {
+        description: 'Clear, coordinated outputs section',
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'description',
           type: 'textarea',
         },
       ],
