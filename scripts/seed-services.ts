@@ -10,31 +10,6 @@ const services = [
       'End-to-end CDM coordination from planning through execution. We manage design reviews, risk registers, contractor oversight and compliance documentation with systematic precision.',
     featured: true,
     order: 1,
-    fullDescription: {
-      root: {
-        type: 'root',
-        children: [
-          {
-            type: 'paragraph',
-            children: [
-              {
-                type: 'text',
-                text: 'Our Construction Design & Management service provides comprehensive project oversight from initial planning through to final execution. We ensure all regulatory requirements are met while maintaining design integrity and cost efficiency.',
-                version: 1,
-              },
-            ],
-            direction: 'ltr',
-            format: '',
-            indent: 0,
-            version: 1,
-          },
-        ],
-        direction: 'ltr',
-        format: '',
-        indent: 0,
-        version: 1,
-      },
-    },
     keyFeatures: [
       { feature: 'BIM', description: 'BIM Models' },
       { feature: '100%', description: 'Design Programs' },
@@ -177,7 +152,7 @@ const services = [
     ctaText: 'REQUEST PROPOSAL OR DISCOVERY CALL',
     ctaLink: '/contact',
   },
-]
+] as const
 
 async function seedServices() {
   const payload = await getPayload({ config })
@@ -199,7 +174,7 @@ async function seedServices() {
 
       await payload.create({
         collection: 'services',
-        data: service,
+        data: service as any,
       })
 
       console.log(`Created service: ${service.title}`)
