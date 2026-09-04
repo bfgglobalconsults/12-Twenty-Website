@@ -5,17 +5,18 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
 interface InsightPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export default async function InsightPage({ params }: InsightPageProps) {
+  const { slug } = await params
   const payload = await getPayload({ config: configPromise })
 
   const insights = await payload.find({
     collection: 'insights',
-    where: { slug: { equals: params.slug } },
+    where: { slug: { equals: slug } },
     limit: 1,
   })
 
