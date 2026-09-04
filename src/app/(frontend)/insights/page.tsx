@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Insight {
   id: string
@@ -198,14 +199,14 @@ export default function InsightsPage() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredInsights.map((insight, index) => (
-              <motion.article
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
-              >
+              <Link href={`/insights/${insight.slug}`} key={index}>
+                <motion.article
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -8 }}
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
+                >
                 <div className="relative h-64 overflow-hidden bg-gray-200">
                   {insight.featuredImage?.url ? (
                     <Image
@@ -242,10 +243,7 @@ export default function InsightsPage() {
                   <h3 className="text-lg font-bold text-gray-900 mb-4 line-clamp-3 group-hover:text-[#E85D3F] transition-colors">
                     {insight.title}
                   </h3>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-2 text-[#E85D3F] font-semibold text-sm group-hover:gap-3 transition-all"
-                  >
+                  <span className="inline-flex items-center gap-2 text-[#E85D3F] font-semibold text-sm group-hover:gap-3 transition-all">
                     Read More
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
@@ -255,9 +253,10 @@ export default function InsightsPage() {
                         d="M9 5l7 7-7 7"
                       />
                     </svg>
-                  </a>
+                  </span>
                 </div>
               </motion.article>
+              </Link>
             ))}
           </div>
 
