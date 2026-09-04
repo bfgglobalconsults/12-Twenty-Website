@@ -80,16 +80,18 @@ export default async function InsightPage({ params }: InsightPageProps) {
         {insight.excerpt && <p className="text-xl text-gray-600 mb-8">{insight.excerpt}</p>}
 
         {/* Featured Image */}
-        {insight.featuredImage && typeof insight.featuredImage !== 'string' && (
-          <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-12">
-            <Image
-              src={insight.featuredImage.url}
-              alt={insight.featuredImage.alt || insight.title}
-              fill
-              className="object-cover"
-            />
-          </div>
-        )}
+        {insight.featuredImage &&
+          typeof insight.featuredImage !== 'string' &&
+          insight.featuredImage.url && (
+            <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-12">
+              <Image
+                src={insight.featuredImage.url}
+                alt={insight.featuredImage.alt || insight.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+          )}
 
         {/* Content */}
         <div className="prose prose-lg max-w-none">
