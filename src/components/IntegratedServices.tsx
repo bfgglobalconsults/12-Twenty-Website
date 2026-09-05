@@ -43,15 +43,29 @@ export default async function IntegratedServices() {
               className="bg-white rounded-3xl p-8 hover:shadow-xl transition-shadow duration-300 relative group"
             >
               <div className="flex justify-between items-start mb-6">
-                <div>
-                  {service.image && typeof service.image !== 'string' && (
+                <div className="w-16 h-16 bg-[#F05C36] bg-opacity-10 rounded-lg flex items-center justify-center">
+                  {service.image && typeof service.image !== 'string' ? (
                     <Image
                       src={service.image.url}
                       alt={service.title}
-                      width={48}
-                      height={48}
-                      className="w-12 h-12"
+                      width={40}
+                      height={40}
+                      className="w-10 h-10"
                     />
+                  ) : (
+                    <svg
+                      className="w-10 h-10 text-[#F05C36]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                      />
+                    </svg>
                   )}
                 </div>
                 <svg
@@ -74,17 +88,15 @@ export default async function IntegratedServices() {
 
               {service.deliverables && service.deliverables.length > 0 && (
                 <div className="border-t border-[#F05C36] pt-6">
-                  <p className="text-xs text-gray-500 font-semibold mb-3 uppercase">
-                    Key Deliverables
-                  </p>
-                  <ul className="space-y-2">
-                    {service.deliverables.map((deliverable, idx: number) => (
-                      <li key={idx} className="text-sm text-gray-600 flex items-start">
-                        <span className="text-coral-500 mr-2">—</span>
-                        {deliverable.title}
-                      </li>
+                  <p className="text-xs text-gray-900 font-bold mb-4 uppercase">Key Outputs</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {service.deliverables.slice(0, 4).map((deliverable, idx: number) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <div className="w-2 h-2 rounded-full bg-[#F05C36] mt-1.5 flex-shrink-0" />
+                        <span className="text-sm text-gray-700">{deliverable.title}</span>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               )}
             </Link>
