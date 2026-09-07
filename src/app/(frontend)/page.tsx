@@ -110,7 +110,7 @@ export default async function HomePage() {
       <Hero />
       <SectionSpacing>
         <AboutUs />
-        <OurExpertise services={services} />
+        <OurExpertise  />
         <TechnologyOperations />
         <RecentProjects />
         <WhyUs />
