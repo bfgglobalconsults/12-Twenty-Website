@@ -107,7 +107,7 @@ export default function OurExpertise() {
           Our Expertise
         </span>
 
-        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-12 leading-tight">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-12 leading-tight">
           Integrated Services.
           <br />
           Lifelong Accountability.
