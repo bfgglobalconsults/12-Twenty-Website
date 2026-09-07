@@ -26,6 +26,12 @@ export const Projects: CollectionConfig = {
       },
     },
     {
+      name: 'description',
+      type: 'textarea',
+      required: true,
+      label: 'Project Description',
+    },
+    {
       name: 'featuredImage',
       type: 'upload',
       relationTo: 'media',

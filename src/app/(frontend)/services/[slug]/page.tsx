@@ -29,7 +29,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-white py-16 px-4">
+      <section className="bg-white py-16 px-4 mt-18">
         <div className="max-w-4xl mx-auto">
           <Link
             href="/services"
@@ -63,10 +63,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </svg>
             </div>
             <div className="flex-1">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                {service.title}
+              <p className="text-lg text-[#F05C36] leading-relaxed">{service.title}</p>
+              <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight">
+                {service.shortDescription}
               </h1>
-              <p className="text-lg text-gray-700 leading-relaxed">{service.shortDescription}</p>
             </div>
           </div>
 

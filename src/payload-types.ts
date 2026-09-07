@@ -216,6 +216,7 @@ export interface Project {
   id: string;
   title: string;
   slug: string;
+  description: string;
   featuredImage: string | Media;
   category: 'commercial' | 'residential' | 'civil' | 'infrastructure';
   status: 'completed' | 'in-progress' | 'planned';
@@ -625,6 +626,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  description?: T;
   featuredImage?: T;
   category?: T;
   status?: T;
