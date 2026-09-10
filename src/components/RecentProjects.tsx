@@ -108,23 +108,27 @@ export default async function RecentProjects() {
                 <p className="text-[#E85D3F] font-bold text-xl mb-6">{project.value}</p>
 
                 <div className="space-y-4">
-                  <div>
-                    <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-2">
-                      DELIVERY CHALLENGE
-                    </h4>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {project.deliveryChallenge}
-                    </p>
-                  </div>
+                  {project.deliveryChallenge && (
+                    <div>
+                      <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-2">
+                        DELIVERY CHALLENGE
+                      </h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {project.deliveryChallenge}
+                      </p>
+                    </div>
+                  )}
 
-                  <div>
-                    <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-2">
-                      MANAGEMENT OUTCOME
-                    </h4>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {project.managementOutcome}
-                    </p>
-                  </div>
+                  {project.managementOutcome && (
+                    <div>
+                      <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-2">
+                        MANAGEMENT OUTCOME
+                      </h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {project.managementOutcome}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -133,12 +137,17 @@ export default async function RecentProjects() {
 
         <div className="flex justify-center mt-16">
           <Link href="/projects">
-          <button className="inline-flex items-center gap-2 px-8 py-3 border border-[#E85D3F] text-[#E85D3F] rounded-full hover:bg-[#E85D3F] hover:text-white transition-all duration-300 font-medium">
-            Learn more
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+            <button className="inline-flex items-center gap-2 px-8 py-3 border border-[#E85D3F] text-[#E85D3F] rounded-full hover:bg-[#E85D3F] hover:text-white transition-all duration-300 font-medium">
+              Learn more
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
           </Link>
         </div>
       </div>
