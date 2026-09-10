@@ -69,7 +69,7 @@ export default function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="https://facebook.com"
+                  href="https://facebook.com/12twentygroupNG"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-white transition-colors"
@@ -79,7 +79,7 @@ export default function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/12twentygroupng"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-white transition-colors"
@@ -89,7 +89,7 @@ export default function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="https://twitter.com"
+                  href="https://twitter.com/12twentygroupNg"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-white transition-colors"
@@ -112,145 +112,145 @@ export default function Footer() {
             </div>
           </div>
           <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Services */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Services */}
 
-            <div>
-              <h4 className="text-lg font-semibold mb-6">Services</h4>
-              <ul className="space-y-6">
-                <li>
-                  <Link
-                    href="/services"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    Construction Design & Management
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    Residential & Infrastructure
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    Roadworks & Civil Engineering
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    Facility Maintenance
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    Materials Procurement
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-6">Services</h4>
+                <ul className="space-y-6">
+                  <li>
+                    <Link
+                      href="/construction-design-management"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      Construction Design & Management
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/residential-construction-infrastructure"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      Residential & Infrastructure
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/roadworks-civil-engineering"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      Roadworks & Civil Engineering
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/facility-maintenance"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      Facility Maintenance
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/materials-procurement"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      Materials Procurement
+                    </Link>
+                  </li>
+                </ul>
+              </div>
 
-            {/* Company */}
-            <div>
-              <h4 className="text-lg font-semibold mb-6">Company</h4>
-              <ul className="space-y-6">
-                <li>
-                  <Link
-                    href="/about"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    About 12Twenty
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/about"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    Leadership Team
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/insights"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    News & Insights
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              {/* Company */}
+              <div>
+                <h4 className="text-lg font-semibold mb-6">Company</h4>
+                <ul className="space-y-6">
+                  <li>
+                    <Link
+                      href="/about"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      About 12Twenty
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/about"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      Leadership Team
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/insights"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      News & Insights
+                    </Link>
+                  </li>
+                  {/* <li>
+                    <Link
+                      href="/contact"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      Contact
+                    </Link>
+                  </li> */}
+                </ul>
+              </div>
 
-            {/* Legal & Contact */}
-            <div>
-              <h4 className="text-lg font-semibold mb-6">Legal & Contact</h4>
-              <ul className="space-y-6">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    Cookie Policy
-                  </Link>
-                </li>
-                <li className="pt-2">
-                  <a
-                    href="mailto:info@12twentygroup.com"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    info@12twentygroup.com
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="tel:+2340000000000"
-                    className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
-                  >
-                    +234 000 0000 0000
-                  </a>
-                </li>
-              </ul>
+              {/* Legal & Contact */}
+              <div>
+                <h4 className="text-lg font-semibold mb-6">Legal & Contact</h4>
+                <ul className="space-y-6">
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      Terms of Service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      Cookie Policy
+                    </Link>
+                  </li>
+                  <li className="pt-2">
+                    <a
+                      href="mailto:info@12twentygroup.com"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      info@12twentygroup.com
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="tel:+2348161210190"
+                      className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
+                    >
+                      +234 8161210190
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              {/* in here */}
+
+              {/* in here end */}
             </div>
-            {/* in here */}
-           
-            {/* in here end */}
-          </div>
-           {/* Bottom Bar */}
+            {/* Bottom Bar */}
             <div className="border-t-2 border-white pt-8 my-8">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
                 <div className="flex items-center gap-6">
@@ -269,7 +269,7 @@ export default function Footer() {
                     info@12twentygroup.com
                   </a>
                   <a
-                    href="tel:+2340000000000"
+                    href="tel:+2348161210190"
                     className="flex items-center gap-2 hover:text-[#E85D3F] transition-colors"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -280,7 +280,7 @@ export default function Footer() {
                         d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                       />
                     </svg>
-                    +234 000 0000 0000
+                    +234 8161210190
                   </a>
                   <span className="flex items-center gap-2 hover:text-[#E85D3F] transition-colors">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -297,7 +297,7 @@ export default function Footer() {
                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                       />
                     </svg>
-                    Lagos, Nigeria
+                    Suite H427 Ikota Shopping Complex VGC Lagos Nigeria
                   </span>
                 </div>
               </div>
