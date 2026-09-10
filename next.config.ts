@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: '12twentygroup.com',
+        hostname: 'www.12twentygroup.com',
       },
       {
         protocol: 'https',
