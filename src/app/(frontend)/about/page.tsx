@@ -7,6 +7,8 @@ import WhyI2Twenty from '@/components/WhyI2Twenty'
 import OurPurpose from '@/components/OurPurpose'
 import Leadership from '@/components/Leadership'
 
+export const revalidate = 60 // Revalidate every 60 seconds
+
 export default function AboutPage() {
   return (
     <>

@@ -4,6 +4,8 @@ import Link from 'next/link'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
+export const revalidate = 60 // Revalidate every 60 seconds
+
 interface ProjectPageProps {
   params: Promise<{
     slug: string
