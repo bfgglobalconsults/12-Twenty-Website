@@ -4,7 +4,6 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import webpack from 'webpack'
 
-
 const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 
@@ -23,6 +22,18 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: '*.public.blob.vercel-storage.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+      {
+        protocol: 'https',
+        hostname: '12twentygroup.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.vercel.app',
       },
     ],
     localPatterns: [
@@ -54,8 +65,6 @@ const nextConfig: NextConfig = {
 
     // Add plugin to handle node: protocol and block server-only imports on client
     webpackConfig.plugins = webpackConfig.plugins || []
-
-   
 
     webpackConfig.plugins.push({
       apply(compiler: any) {

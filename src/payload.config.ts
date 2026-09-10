@@ -53,6 +53,7 @@ export default buildConfig({
       addRandomSuffix: true,
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
       access: 'public',
+      cacheControlMaxAge: 31536000,
     }),
   ],
 })
