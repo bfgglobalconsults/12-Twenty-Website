@@ -4,7 +4,7 @@ import Link from 'next/link'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import ConsultationButton from '@/components/ConsultationButton'
-import { JSXConvertersFunction, RichText } from '@payloadcms/richtext-lexical/react'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 
 interface InsightPageProps {
   params: Promise<{
@@ -50,19 +50,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white mt-16">
-    {insight.featuredImage &&
-        typeof insight.featuredImage !== 'string' &&
-        insight.featuredImage.url ? (
-          <Image
-            src={insight.featuredImage.url}
-            alt={insight.title}
-            fill
-            className="object-cover"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300" />
-        )}
+    <div className="min-h-screen bg-white">
       <article className="max-w-4xl mx-auto px-4 py-16">
         <Link
           href="/insights"
