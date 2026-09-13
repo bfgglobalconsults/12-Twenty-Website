@@ -1,6 +1,9 @@
+'use client'
+
 import ServicesHero from '@/components/ServicesHero'
 import Image from 'next/image'
 import Link from 'next/link'
+import ConsultationButton from '@/components/ConsultationButton'
 
 export default function FacilityMaintenancePage() {
   return (

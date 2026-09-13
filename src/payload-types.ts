@@ -75,6 +75,8 @@ export interface Config {
     'consultation-requests': ConsultationRequest;
     'contact-submissions': ContactSubmission;
     services: Service;
+    testimonials: Testimonial;
+    'testimonial-submissions': TestimonialSubmission;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -90,6 +92,8 @@ export interface Config {
     'consultation-requests': ConsultationRequestsSelect<false> | ConsultationRequestsSelect<true>;
     'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    'testimonial-submissions': TestimonialSubmissionsSelect<false> | TestimonialSubmissionsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -438,6 +442,43 @@ export interface Service {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: string;
+  quote: string;
+  author: string;
+  position?: string | null;
+  company?: string | null;
+  location?: string | null;
+  photo?: (string | null) | Media;
+  rating?: number | null;
+  featured?: boolean | null;
+  /**
+   * Lower numbers appear first
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonial-submissions".
+ */
+export interface TestimonialSubmission {
+  id: string;
+  quote: string;
+  author: string;
+  email: string;
+  position?: string | null;
+  company?: string | null;
+  rating?: number | null;
+  status?: ('pending' | 'approved' | 'rejected') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -491,6 +532,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'services';
         value: string | Service;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: string | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'testimonial-submissions';
+        value: string | TestimonialSubmission;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -776,6 +825,38 @@ export interface ServicesSelect<T extends boolean = true> {
   relatedProjects?: T;
   ctaText?: T;
   ctaLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  quote?: T;
+  author?: T;
+  position?: T;
+  company?: T;
+  location?: T;
+  photo?: T;
+  rating?: T;
+  featured?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonial-submissions_select".
+ */
+export interface TestimonialSubmissionsSelect<T extends boolean = true> {
+  quote?: T;
+  author?: T;
+  email?: T;
+  position?: T;
+  company?: T;
+  rating?: T;
+  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }

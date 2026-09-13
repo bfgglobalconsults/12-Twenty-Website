@@ -3,6 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import ConsultationButton from '@/components/ConsultationButton'
+import { JSXConvertersFunction, RichText } from '@payloadcms/richtext-lexical/react'
 
 interface InsightPageProps {
   params: Promise<{
@@ -94,14 +96,8 @@ export default async function InsightPage({ params }: InsightPageProps) {
           )}
 
         {/* Content */}
-        <div className="prose prose-lg max-w-none">
-          {insight.content && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify(insight.content),
-              }}
-            />
-          )}
+        <div className="prose prose-lg prose-headings:font-bold prose-h2:text-3xl prose-h3:text-2xl prose-p:text-gray-700 prose-a:text-[#E85D3F] prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal max-w-none">
+          {insight.content && <RichText data={insight.content} />}
         </div>
 
         {/* CTA Section */}
@@ -112,12 +108,9 @@ export default async function InsightPage({ params }: InsightPageProps) {
           <p className="text-gray-600 mb-6">
             Discover how we can help transform your construction project challenges.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-[#E85D3F] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#d54d2d] transition-colors"
-          >
+          <ConsultationButton className="inline-block bg-[#E85D3F] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#d54d2d] transition-colors">
             Get in Touch
-          </Link>
+          </ConsultationButton>
         </div>
       </article>
     </div>

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import ConsultationButton from '@/components/ConsultationButton'
 
 interface ServicePageProps {
   params: Promise<{
@@ -199,12 +200,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </svg>
               All Services
             </Link>
-            <Link
-              href={service.ctaLink || '/contact'}
-              className="inline-block bg-[#F05C36] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#d54d2d] transition-colors"
-            >
+            <ConsultationButton className="inline-block bg-[#F05C36] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#d54d2d] transition-colors">
               {service.ctaText || 'REQUEST PROPOSAL OR DISCOVERY CALL'}
-            </Link>
+            </ConsultationButton>
           </div>
         </div>
       </section>

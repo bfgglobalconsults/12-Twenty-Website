@@ -91,6 +91,7 @@ const fallbackServices = [
 
 export default async function HomePage() {
   let services = fallbackServices
+  let testimonials: any[] = []
 
   try {
     const payload = await getPayload({ config: configPromise })
@@ -101,6 +102,14 @@ export default async function HomePage() {
       limit: 10,
     })
     services = result.docs as any
+
+    const testimonialsResult = await payload.find({
+      collection: 'testimonials',
+      where: { featured: { equals: true } },
+      sort: 'order',
+      limit: 10,
+    })
+    testimonials = testimonialsResult.docs as any
   } catch (error) {
     console.warn('Database connection failed, using fallback data:', error)
   }
@@ -110,13 +119,13 @@ export default async function HomePage() {
       <Hero />
       <SectionSpacing>
         <AboutUs />
-        <OurExpertise  />
+        <OurExpertise />
         <TechnologyOperations />
         <RecentProjects />
         <WhyUs />
         <ManagedProjects />
         <Leadership />
-        <ClientTestimonials />
+        <ClientTestimonials testimonials={testimonials} />
         <LatestBlogs />
         <ConsultationForm />
         <Newsletter />

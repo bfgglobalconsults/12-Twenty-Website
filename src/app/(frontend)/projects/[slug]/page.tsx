@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import ConsultationButton from '@/components/ConsultationButton'
 
 export const revalidate = 60 // Revalidate every 60 seconds
 
@@ -174,12 +175,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               </svg>
               All Projects
             </Link>
-            <Link
-              href="/contact"
-              className="inline-block bg-[#F05C36] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#d54d2d] transition-colors"
-            >
+            <ConsultationButton className="inline-block bg-[#F05C36] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#d54d2d] transition-colors">
               Start Your Project
-            </Link>
+            </ConsultationButton>
           </div>
         </div>
       </section>

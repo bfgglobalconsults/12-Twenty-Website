@@ -1,26 +1,17 @@
-import React from 'react'
+import Image from 'next/image'
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
 
-export default function Testimonials() {
-  const testimonials = [
-    {
-      name: 'Wade Warren',
-      location: 'USA, California',
-      text: "The level of security provided by CypherPlay is unmatched. I feel confident using my card for both everyday purchases and travel. It's the peace of mind I was looking for.",
-      rating: 5,
-    },
-    {
-      name: 'Emelie Thomson',
-      location: 'USA, Florida',
-      text: "I can't believe how easy it was to set up my CypherPlay account. The mobile app is user-friendly, and I can manage my card on the go. Highly recommended!",
-      rating: 5,
-    },
-    {
-      name: 'Jenny Wilson',
-      location: 'USA, Nevada',
-      text: 'CypherPlay has transformed the way I make payments. The virtual card feature adds an extra layer of security. I love the peace of mind it brings to my online transactions.',
-      rating: 5,
-    },
-  ]
+export default async function Testimonials() {
+  const payload = await getPayload({ config: configPromise })
+
+  const testimonialsData = await payload.find({
+    collection: 'testimonials',
+    sort: 'order',
+    limit: 100,
+  })
+
+  const testimonials = testimonialsData.docs
 
   return (
     <section className="py-16 bg-gray-50">
@@ -33,10 +24,10 @@ export default function Testimonials() {
           they chose Estatein for their real estate needs.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white rounded-lg p-6 shadow-md">
+          {testimonials.map((testimonial) => (
+            <div key={testimonial.id} className="bg-white rounded-lg p-6 shadow-md">
               <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
+                {[...Array(testimonial.rating || 5)].map((_, i) => (
                   <svg
                     key={i}
                     className="w-5 h-5 text-yellow-400"
@@ -47,12 +38,27 @@ export default function Testimonials() {
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-700 mb-4">{testimonial.text}</p>
+              <p className="text-gray-700 mb-4">{testimonial.quote}</p>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gray-300 rounded-full" />
+                {testimonial.photo &&
+                typeof testimonial.photo !== 'string' &&
+                testimonial.photo.url ? (
+                  <div className="w-12 h-12 relative rounded-full overflow-hidden">
+                    <Image
+                      src={testimonial.photo.url}
+                      alt={testimonial.author}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-12 h-12 bg-gray-300 rounded-full" />
+                )}
                 <div>
-                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-600">{testimonial.location}</p>
+                  <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                  {testimonial.location && (
+                    <p className="text-sm text-gray-600">{testimonial.location}</p>
+                  )}
                 </div>
               </div>
             </div>

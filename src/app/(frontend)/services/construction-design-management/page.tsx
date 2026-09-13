@@ -1,6 +1,9 @@
+'use client'
+
 import ServicesHero from '@/components/ServicesHero'
 import Image from 'next/image'
 import Link from 'next/link'
+import ConsultationButton from '@/components/ConsultationButton'
 
 export default function ConstructionDesignManagementPage() {
   return (
@@ -466,12 +469,9 @@ export default function ConstructionDesignManagementPage() {
                 </svg>
                 All Services
               </Link>
-              <Link
-                href="/contact"
-                className="inline-block bg-[#F05C36] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#d54d2d] transition-colors"
-              >
+              <ConsultationButton className="inline-block bg-[#F05C36] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#d54d2d] transition-colors">
                 REQUEST PROPOSAL OR DISCOVERY CALL
-              </Link>
+              </ConsultationButton>
             </div>
           </div>
         </section>
