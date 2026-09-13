@@ -10,6 +10,38 @@ export const TestimonialSubmissions: CollectionConfig = {
     read: () => true,
     create: () => true,
   },
+  hooks: {
+    afterChange: [
+      async ({ doc, req, previousDoc, operation }) => {
+        // When status changes to approved, create a testimonial
+        if (
+          doc.status === 'approved' &&
+          previousDoc?.status !== 'approved' &&
+          operation === 'update'
+        ) {
+          try {
+            await req.payload.create({
+              collection: 'testimonials',
+              data: {
+                quote: doc.quote,
+                author: doc.author,
+                position: doc.position,
+                company: doc.company,
+                rating: doc.rating,
+                featured: false,
+                order: 0,
+              },
+            })
+          } catch (error) {
+            req.payload.logger.error(
+              `Failed to create testimonial from submission ${doc.id}: ${error}`,
+            )
+          }
+        }
+        return doc
+      },
+    ],
+  },
   fields: [
     {
       name: 'quote',
