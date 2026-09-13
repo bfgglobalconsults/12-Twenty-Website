@@ -1,0 +1,22 @@
+import React from 'react'
+import { Urbanist } from 'next/font/google'
+import './(frontend)/styles.css'
+
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-urbanist',
+})
+
+export const metadata = {
+  description: 'Find your dream property with our comprehensive real estate platform.',
+  title: '12Twenty Group - Find Your Perfect Home',
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={urbanist.variable} suppressHydrationWarning>
+      <body className={urbanist.className}>{children}</body>
+    </html>
+  )
+}
