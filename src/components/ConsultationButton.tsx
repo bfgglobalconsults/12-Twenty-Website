@@ -13,6 +13,7 @@ export default function ConsultationButton({ className, children }: Consultation
 
   return (
     <>
+    {/* consult button */}
       <button onClick={() => setIsModalOpen(true)} className={className}>
         {children || 'Start Your Project'}
       </button>

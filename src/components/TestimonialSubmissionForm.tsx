@@ -68,7 +68,7 @@ export default function TestimonialSubmissionForm({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         <div className="sticky top-0 bg-white px-8 pt-8 pb-4 border-b border-gray-200 rounded-t-3xl">
           <div className="flex justify-between items-start">
