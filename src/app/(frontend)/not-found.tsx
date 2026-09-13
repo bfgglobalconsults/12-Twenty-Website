@@ -5,7 +5,7 @@ import ConsultationButton from '@/components/ConsultationButton'
 
 export default function NotFound() {
   return (
-    <div className="min-h-[60vh] bg-white flex items-center justify-center mt-10 px-4 py-16">
+    <div className="min-h-[60vh] bg-white flex items-center justify-center mt-12 px-4 py-16">
       <div className="max-w-2xl mx-auto text-center">
         <div className="mb-8">
           <h1 className="text-9xl font-bold text-[#E85D3F] mb-4">404</h1>
