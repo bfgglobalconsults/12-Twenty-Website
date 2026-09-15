@@ -20,6 +20,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
     collection: 'insights',
     where: { slug: { equals: slug } },
     limit: 1,
+    depth: 2, // Populate relationships like featuredImage
   })
 
   const insight = insights.docs[0]
