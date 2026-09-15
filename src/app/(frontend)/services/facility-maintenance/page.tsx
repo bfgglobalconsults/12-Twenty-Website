@@ -433,12 +433,9 @@ export default function FacilityMaintenancePage() {
                 </svg>
                 All Services
               </Link>
-              <Link
-                href="/contact"
-                className="inline-block bg-[#F05C36] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#d54d2d] transition-colors"
-              >
-                REQUEST PROPOSAL OR DISCOVERY CALL
-              </Link>
+              <ConsultationButton className="inline-block bg-[#F05C36] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#d54d2d] transition-colors">
+                             REQUEST PROPOSAL OR DISCOVERY CALL
+                           </ConsultationButton>
             </div>
           </div>
         </section>
