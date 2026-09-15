@@ -4,6 +4,7 @@ import Link from 'next/link'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import ConsultationButton from '@/components/ConsultationButton'
+import { motion } from 'framer-motion'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 
 interface InsightPageProps {
@@ -52,6 +53,48 @@ export default async function InsightPage({ params }: InsightPageProps) {
 
   return (
     <div className="min-h-screen bg-white">
+       {/* Hero Section */}
+            <section
+              className="relative h-[60vh] md:h-[70vh] bg-cover bg-center"
+              style={{
+                backgroundImage: 'url("/assets/insights-hero.jpg")',
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90" />
+      
+              <div className="relative max-w-7xl mx-auto px-4 md:px-8 h-full flex flex-col  pt-24 md:pt-32">
+                <div className="max-w-3xl">
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-[#E85D3F] font-medium text-sm tracking-wide uppercase block mb-4 mt-[50px]"
+                  >
+                    Resources
+                  </motion.span>
+      
+                  <motion.h1
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+                  >
+                    Insights & Resources
+                  </motion.h1>
+      
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="text-white/90 text-base md:text-lg max-w-2xl"
+                  >
+                    Discover best practices, case studies, and expert perspectives from our delivery
+                    leadership team. These insights reflect real-world complexity and help our partners
+                    navigate their digital infrastructure projects.
+                  </motion.p>
+                </div>
+              </div>
+            </section>
       <article className="max-w-4xl mx-auto px-4 py-16">
         <Link
           href="/insights"
