@@ -63,6 +63,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'All required fields must be provided' }, { status: 400 })
     }
 
+    // Validate notes length
+    if (notes && notes.length > 500) {
+      return NextResponse.json(
+        { error: 'Additional notes must be 500 characters or less' },
+        { status: 400 },
+      )
+    }
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {

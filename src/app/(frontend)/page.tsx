@@ -105,10 +105,11 @@ export default async function HomePage() {
     services = result.docs as any
 
     const testimonialsResult = await payload.find({
-      collection: 'testimonials',
-      where: { featured: { equals: true } },
-      sort: 'order',
+      collection: 'testimonial-submissions',
+      where: { status: { equals: 'approved' } },
+      sort: '-createdAt',
       limit: 10,
+      depth: 1,
     })
     testimonials = testimonialsResult.docs as any
 
