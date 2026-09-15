@@ -98,7 +98,7 @@ export default function Footer() {
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
-                <a
+                {/* <a
                   href="https://youtube.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -107,7 +107,7 @@ export default function Footer() {
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
                   </svg>
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function Footer() {
                 <ul className="space-y-6">
                   <li>
                     <Link
-                      href="/construction-design-management"
+                      href="/services/construction-design-management"
                       className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
                     >
                       Construction Design & Management
@@ -128,7 +128,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/residential-construction-infrastructure"
+                      href="/services/residential-construction-infrastructure"
                       className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
                     >
                       Residential & Infrastructure
@@ -136,7 +136,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/roadworks-civil-engineering"
+                      href="/services/roadworks-civil-engineering"
                       className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
                     >
                       Roadworks & Civil Engineering
@@ -144,7 +144,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/facility-maintenance"
+                      href="/services/facility-maintenance"
                       className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
                     >
                       Facility Maintenance
@@ -152,7 +152,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/materials-procurement"
+                      href="/services/materials-procurement"
                       className="text-white/80 hover:text-[#E85D3F] transition-colors text-sm"
                     >
                       Materials Procurement
