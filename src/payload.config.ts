@@ -5,6 +5,7 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -49,6 +50,19 @@ export default buildConfig({
     url: process.env.DATABASE_URL || '',
   }),
   sharp,
+  email: nodemailerAdapter({
+    defaultFromAddress: process.env.EMAIL_FROM || 'noreply@12twentygroup.com',
+    defaultFromName: '12Twenty Group',
+    transportOptions: {
+      host: process.env.SMTP_HOST || 'smtp.gmail.com',
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: process.env.SMTP_SECURE === 'true',
+      auth: {
+        user: process.env.SMTP_USER || '',
+        pass: process.env.SMTP_PASS || '',
+      },
+    } as any,
+  }),
   plugins: [
     vercelBlobStorage({
       collections: {

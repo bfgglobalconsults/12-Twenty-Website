@@ -17,10 +17,58 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
     phone: '',
     budget: '',
     notes: '',
+    honeypot: '', // Spam detection field - hidden from users
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null
+    message: string
+  }>({ type: null, message: '' })
+  const [submittedAt] = useState(Date.now()) // Track when form was loaded
+  const [emailError, setEmailError] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Email validation function
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+
+  const handleEmailBlur = () => {
+    if (formData.email && !validateEmail(formData.email)) {
+      setEmailError('Please enter a valid email address')
+    } else {
+      setEmailError('')
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    // Validate email before submission
+    if (!validateEmail(formData.email)) {
+      setEmailError('Please enter a valid email address')
+      return
+    }
+
+    // Spam Protection 1: Honeypot field check
+    if (formData.honeypot) {
+      console.log('Spam detected via honeypot')
+      return
+    }
+
+    // Spam Protection 2: Time-based check (prevent instant submissions)
+    const timeElapsed = Date.now() - submittedAt
+    if (timeElapsed < 3000) {
+      // Less than 3 seconds
+      setSubmitStatus({
+        type: 'error',
+        message: 'Please take your time to fill out the form properly.',
+      })
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: '' })
 
     try {
       const response = await fetch('/api/consultation-requests', {
@@ -28,37 +76,70 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          projectType: formData.projectType,
+          projectStage: formData.projectStage,
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          budget: formData.budget,
+          notes: formData.notes,
+        }),
       })
 
-      if (response.ok) {
-        alert('Thank you! Your consultation request has been submitted successfully.')
-        setFormData({
-          projectType: '',
-          projectStage: '',
-          fullName: '',
-          email: '',
-          phone: '',
-          budget: '',
-          notes: '',
-        })
-        onClose()
-      } else {
-        alert('There was an error submitting your request. Please try again.')
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit consultation request')
       }
+
+      setSubmitStatus({
+        type: 'success',
+        message:
+          'Thank you! Your consultation request has been received. We will respond within 24-48 hours.',
+      })
+      setFormData({
+        projectType: '',
+        projectStage: '',
+        fullName: '',
+        email: '',
+        phone: '',
+        budget: '',
+        notes: '',
+        honeypot: '',
+      })
+
+      // Close modal after 3 seconds
+      setTimeout(() => {
+        onClose()
+        setSubmitStatus({ type: null, message: '' })
+      }, 3000)
     } catch (error) {
-      console.error('Error submitting form:', error)
-      alert('There was an error submitting your request. Please try again.')
+      setSubmitStatus({
+        type: 'error',
+        message:
+          error instanceof Error
+            ? error.message
+            : 'Something went wrong. Please try again or contact us directly.',
+      })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
+    const { name, value } = e.target
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     })
+
+    // Clear email error when user types
+    if (name === 'email' && emailError) {
+      setEmailError('')
+    }
   }
 
   return (
@@ -180,10 +261,14 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
+                      onBlur={handleEmailBlur}
                       placeholder="your@email.com"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85D3F] text-gray-900 placeholder-gray-400"
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85D3F] text-gray-900 placeholder-gray-400 ${
+                        emailError ? 'border-red-500' : 'border-gray-300'
+                      }`}
                     />
+                    {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
                   </div>
                 </div>
 
@@ -241,12 +326,43 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                   />
                 </div>
 
+                {/* Honeypot field - hidden from real users */}
+                <input
+                  type="text"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  style={{
+                    position: 'absolute',
+                    left: '-9999px',
+                    width: '1px',
+                    height: '1px',
+                  }}
+                  aria-hidden="true"
+                />
+
+                {/* Status Message */}
+                {submitStatus.type && (
+                  <div
+                    className={`p-4 rounded-lg ${
+                      submitStatus.type === 'success'
+                        ? 'bg-green-50 text-green-800 border border-green-200'
+                        : 'bg-red-50 text-red-800 border border-red-200'
+                    }`}
+                  >
+                    {submitStatus.message}
+                  </div>
+                )}
+
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full md:w-auto px-8 py-4 bg-[#E85D3F] text-white rounded-full hover:bg-[#d54d2d] transition-colors font-semibold flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full md:w-auto px-8 py-4 bg-[#E85D3F] text-white rounded-full hover:bg-[#d54d2d] transition-colors font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit Consultation Request
+                  {isSubmitting ? 'Submitting...' : 'Submit Consultation Request'}
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
