@@ -207,9 +207,11 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85D3F] text-gray-900"
                     >
                       <option value="">Select project type</option>
-                      <option value="commercial">Commercial Development</option>
-                      <option value="residential">Residential Construction</option>
-                      <option value="industrial">Industrial Development</option>
+                      <option value="construction">Construction Design & Management</option>
+                      <option value="residential">Residential & Infrastructure</option>
+                      <option value="roadworks">Roadworks & Civil Engineering</option>
+                      <option value="facility">Facility Maintenance</option>
+                      <option value="procurement">Materials Procurement</option>
                     </select>
                   </div>
 
@@ -226,10 +228,11 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85D3F] text-gray-900"
                     >
                       <option value="">Select project stage</option>
-                      <option value="planning">Concept/Planning </option>
+                      <option value="concept">Concept/Planning </option>
                       <option value="design">Design/Permitting </option>
+                      <option value="pre-construction">Pre-Construction</option>
                       <option value="construction">Under Construction</option>
-                      <option value="renovation">Renovation/Remodel</option>
+                      <option value="handover">Handover/Closeout</option>
                     </select>
                   </div>
                 </div>
@@ -313,13 +316,17 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
 
                 {/* Additional Notes */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    ADDITIONAL NOTES
-                  </label>
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="block text-sm font-semibold text-gray-900">
+                      ADDITIONAL NOTES
+                    </label>
+                    <span className="text-sm text-gray-500">{formData.notes.length}/500</span>
+                  </div>
                   <textarea
                     name="notes"
                     value={formData.notes}
                     onChange={handleChange}
+                    maxLength={500}
                     placeholder="Tell us about your project requirements, timeline and any specific challenges..."
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85D3F] text-gray-900 placeholder-gray-400 resize-none"
