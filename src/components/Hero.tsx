@@ -114,7 +114,7 @@ export default function Hero() {
                 </div>
                 <div>
                   <p className="text-black font-semibold text-sm md:text-sm">
-                    50K+ Happy Clients
+                    4K Happy Clients
                   </p>
                   <div className="flex items-center gap-1">
                     <div className="flex">
