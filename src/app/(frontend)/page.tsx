@@ -16,6 +16,9 @@ import SectionSpacing from '@/utilities/SectionSpacing'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
+export const revalidate = 60 // Revalidate every 60 seconds
+
+
 const fallbackServices = [
   {
     id: '1',
@@ -112,6 +115,10 @@ export default async function HomePage() {
       depth: 1,
     })
     testimonials = testimonialsResult.docs as any
+
+    // Debug log to see what we're getting
+    console.log('Testimonials found:', testimonialsResult.docs.length)
+    console.log('Testimonials data:', JSON.stringify(testimonialsResult.docs, null, 2))
 
     const insightsResult = await payload.find({
       collection: 'insights',

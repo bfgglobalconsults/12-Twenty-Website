@@ -1,5 +1,13 @@
 import type { CollectionConfig } from 'payload'
 
+// Function to generate slug from title
+const formatSlug = (val: string): string => {
+  return val
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '')
+}
+
 export const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
@@ -8,6 +16,23 @@ export const Projects: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    beforeValidate: [
+      ({ data, operation, originalDoc }) => {
+        // Only auto-generate slug on create OR if slug is empty
+        if (operation === 'create' && data?.title) {
+          if (!data.slug || data.slug === '') {
+            data.slug = formatSlug(data.title)
+          }
+        } else if (operation === 'update' && data?.title) {
+          if (!data.slug || data.slug === '') {
+            data.slug = formatSlug(data.title)
+          }
+        }
+        return data
+      },
+    ],
   },
   fields: [
     {
@@ -23,6 +48,7 @@ export const Projects: CollectionConfig = {
       unique: true,
       admin: {
         position: 'sidebar',
+        description: 'Auto-generated on creation. Edit manually to change URL.',
       },
     },
     {

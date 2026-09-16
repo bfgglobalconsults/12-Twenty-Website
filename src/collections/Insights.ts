@@ -1,5 +1,13 @@
 import type { CollectionConfig } from 'payload'
 
+// Function to generate slug from title
+const formatSlug = (val: string): string => {
+  return val
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '')
+}
+
 export const Insights: CollectionConfig = {
   slug: 'insights',
   admin: {
@@ -8,6 +16,27 @@ export const Insights: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    beforeValidate: [
+      ({ data, operation, originalDoc }) => {
+        // Only auto-generate slug on create OR if slug is empty
+        if (operation === 'create' && data?.title) {
+          // New document - generate slug if not provided
+          if (!data.slug || data.slug === '') {
+            data.slug = formatSlug(data.title)
+          }
+        } else if (operation === 'update' && data?.title) {
+          // Existing document - only generate if slug is completely empty
+          // This preserves existing slugs even when title changes
+          if (!data.slug || data.slug === '') {
+            data.slug = formatSlug(data.title)
+          }
+          // If slug exists, keep it unchanged
+        }
+        return data
+      },
+    ],
   },
   fields: [
     {
@@ -23,6 +52,7 @@ export const Insights: CollectionConfig = {
       unique: true,
       admin: {
         position: 'sidebar',
+        description: 'Auto-generated on creation. Edit manually to change URL.',
       },
     },
     {
