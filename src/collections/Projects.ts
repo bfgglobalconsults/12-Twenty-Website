@@ -99,7 +99,11 @@ export const Projects: CollectionConfig = {
       name: 'value',
       type: 'text',
       required: true,
-      label: 'Project Value (e.g., $762M)',
+      label: 'Project Value',
+      admin: {
+        description: 'e.g., ₦762M or ₦1.5B',
+        placeholder: '₦500M',
+      },
     },
     {
       name: 'deliveryChallenge',

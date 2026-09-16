@@ -18,7 +18,6 @@ import { getPayload } from 'payload'
 
 export const revalidate = 60 // Revalidate every 60 seconds
 
-
 const fallbackServices = [
   {
     id: '1',
@@ -122,10 +121,19 @@ export default async function HomePage() {
 
     const insightsResult = await payload.find({
       collection: 'insights',
+      where: {
+        status: { equals: 'published' },
+      },
       sort: '-publishedDate',
-      limit: 3,
+      limit: 10, // Get more to filter
+      depth: 2, // Populate featuredImage
     })
-    insights = insightsResult.docs as any
+
+    // Prioritize featured articles first
+    const allInsights = insightsResult.docs as any[]
+    const featured = allInsights.filter((i) => i.featured === true)
+    const nonFeatured = allInsights.filter((i) => i.featured !== true)
+    insights = [...featured, ...nonFeatured].slice(0, 3) // Take first 3 (featured first)
   } catch (error) {
     console.warn('Database connection failed, using fallback data:', error)
   }

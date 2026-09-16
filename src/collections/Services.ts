@@ -13,6 +13,7 @@ export const Services: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'icon', 'featured'],
+    hidden: true, // Hide from admin navigation
   },
   access: {
     read: () => true,

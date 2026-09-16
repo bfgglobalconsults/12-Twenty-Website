@@ -5,6 +5,7 @@ export const Testimonials: CollectionConfig = {
   admin: {
     useAsTitle: 'author',
     defaultColumns: ['author', 'company', 'featured', 'order'],
+    hidden: true, // Hide from admin navigation (using Testimonial Submissions instead)
   },
   access: {
     read: () => true,
