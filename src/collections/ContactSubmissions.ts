@@ -6,6 +6,7 @@ export const ContactSubmissions: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'email', 'subject', 'status', 'createdAt'],
     group: 'Form Submissions',
+    hidden: true, // Hide from admin navigation
   },
   fields: [
     {

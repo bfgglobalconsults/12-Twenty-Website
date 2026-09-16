@@ -30,11 +30,11 @@ export const ConsultationRequests: CollectionConfig = {
             }
 
             const budgetLabels: Record<string, string> = {
-              '<50m': 'Under $50M',
-              '50-100m': '$50M - $100M',
-              '100-250m': '$100M - $250M',
-              '250-500m': '$250M - $500M',
-              '500m+': '$500M+',
+              '<50m': 'Under ₦50M',
+              '50-100m': '₦50M - ₦100M',
+              '100-250m': '₦100M - ₦250M',
+              '250-500m': '₦250M - ₦500M',
+              '500m+': '₦500M+',
             }
 
             await req.payload.sendEmail({
@@ -142,11 +142,11 @@ export const ConsultationRequests: CollectionConfig = {
       type: 'select',
       required: true,
       options: [
-        { label: 'Under $50M', value: '<50m' },
-        { label: '$50M - $100M', value: '50-100m' },
-        { label: '$100M - $250M', value: '100-250m' },
-        { label: '$250M - $500M', value: '250-500m' },
-        { label: '$500M+', value: '500m+' },
+        { label: 'Under ₦50M', value: '<50m' },
+        { label: '₦50M - ₦100M', value: '50-100m' },
+        { label: '₦100M - ₦250M', value: '100-250m' },
+        { label: '₦250M - ₦500M', value: '250-500m' },
+        { label: '₦500M+', value: '500m+' },
       ],
     },
     {

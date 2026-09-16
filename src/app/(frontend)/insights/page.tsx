@@ -16,6 +16,7 @@ interface Insight {
   excerpt: string
   category: string
   publishedDate: string
+  featured?: boolean
 }
 
 export default function InsightsPage() {
@@ -30,11 +31,21 @@ export default function InsightsPage() {
 
   const fetchInsights = async () => {
     try {
-      const response = await fetch(
-        '/api/insights?where[status][equals]=published&limit=50&depth=2&sort=-publishedDate',
-      )
+      const response = await fetch('/api/insights?where[status][equals]=published&limit=50&depth=2')
       const data = await response.json()
-      setInsights(data.docs || [])
+      const allInsights = data.docs || []
+
+      // Sort: Featured first, then by published date (newest)
+      const sorted = allInsights.sort((a: Insight, b: Insight) => {
+        // Featured articles come first
+        if (a.featured && !b.featured) return -1
+        if (!a.featured && b.featured) return 1
+
+        // Then sort by date
+        return new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
+      })
+
+      setInsights(sorted)
     } catch (error) {
       console.error('Error fetching insights:', error)
     } finally {
@@ -234,10 +245,18 @@ export default function InsightsPage() {
                         </svg>
                       </div>
                     )}
-                    <div className="absolute top-4 left-4">
+                    <div className="absolute top-4 left-4 flex gap-2">
                       <span className="bg-[#E85D3F] text-white px-4 py-1 rounded-full text-xs font-semibold">
                         {getCategoryLabel(insight.category)}
                       </span>
+                      {insight.featured && (
+                        <span className="bg-yellow-500 text-white px-4 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                          Featured
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="p-6">
