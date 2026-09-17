@@ -219,14 +219,15 @@ export interface Media {
 export interface Project {
   id: string;
   title: string;
+  /**
+   * Auto-generated on creation. Edit manually to change URL.
+   */
   slug: string;
   description: string;
   featuredImage: string | Media;
   category: 'commercial' | 'residential' | 'civil' | 'infrastructure';
   status: 'completed' | 'in-progress' | 'planned';
   year: string;
-  value: string;
-  deliveryChallenge: string;
   managementOutcome: string;
   location?: string | null;
   client?: string | null;
@@ -273,6 +274,9 @@ export interface Team {
 export interface Insight {
   id: string;
   title: string;
+  /**
+   * Auto-generated on creation. Edit manually to change URL.
+   */
   slug: string;
   featuredImage: string | Media;
   excerpt: string;
@@ -354,6 +358,9 @@ export interface ContactSubmission {
 export interface Service {
   id: string;
   title: string;
+  /**
+   * Auto-generated on creation. Edit manually to change URL.
+   */
   slug: string;
   /**
    * Icon identifier for the service card
@@ -680,8 +687,6 @@ export interface ProjectsSelect<T extends boolean = true> {
   category?: T;
   status?: T;
   year?: T;
-  value?: T;
-  deliveryChallenge?: T;
   managementOutcome?: T;
   location?: T;
   client?: T;

@@ -67,18 +67,34 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             Back to Projects
           </Link>
 
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="text-[#F05C36] font-medium text-xs tracking-wide uppercase">
               {getCategoryLabel(project.category)}
             </span>
             <span className="text-white/60">•</span>
             <span className="text-white/80 text-sm">{project.year}</span>
+            <span className="text-white/60">•</span>
+            <span
+              className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                project.status === 'completed'
+                  ? 'bg-green-500/90 text-white'
+                  : project.status === 'in-progress'
+                    ? 'bg-blue-500/90 text-white'
+                    : 'bg-yellow-500/90 text-white'
+              }`}
+            >
+              {project.status === 'completed'
+                ? 'Completed'
+                : project.status === 'in-progress'
+                  ? 'In Progress'
+                  : 'Planned'}
+            </span>
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
             {project.title}
           </h1>
-          <p className="text-[#F05C36] font-bold text-2xl">{project.value}</p>
+          {/* <p className="text-[#F05C36] font-bold text-2xl">{project.value}</p> */}
         </div>
       </section>
 
@@ -86,14 +102,14 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           {/* Delivery Challenge */}
-          {project.deliveryChallenge && (
+          {/* {project.deliveryChallenge && (
             <div className="mb-12">
               <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-4">
                 Delivery Challenge
               </h2>
               <p className="text-gray-700 text-lg leading-relaxed">{project.deliveryChallenge}</p>
             </div>
-          )}
+          )} */}
 
           {/* Management Outcome */}
           {project.managementOutcome && (
@@ -114,6 +130,36 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <p className="text-gray-700 text-lg leading-relaxed">{project.description}</p>
             </div>
           )}
+
+          {/* Confidentiality Notice */}
+          <div className="mb-12 bg-gray-50 border-l-4 border-[#F05C36] p-6 rounded-r-lg">
+            <div className="flex gap-3">
+              <svg
+                className="w-5 h-5 text-[#F05C36] flex-shrink-0 mt-0.5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-900 mb-2">Confidentiality Notice</h3>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Due to a confidential agreement, full project details aren't shown publicly.{' '}
+                  <a
+                    href="mailto:support@12twentygroup.com?subject=Project Brochure Request - {project.title}"
+                    className="text-[#F05C36] hover:text-[#d54d2d] font-medium underline"
+                  >
+                    Request brochure by email
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* Location & Client */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">

@@ -19,6 +19,8 @@ export default async function RecentProjects() {
   })
 
   const projects = projectsData.docs.map((project: Project, index: number) => ({
+    id: project.id,
+    slug: project.slug,
     image:
       typeof project.featuredImage === 'object' && project.featuredImage
         ? project.featuredImage.url
@@ -27,6 +29,7 @@ export default async function RecentProjects() {
     year: project.year,
     title: project.title,
     value: project.value,
+    status: project.status,
     deliveryChallenge: project.deliveryChallenge,
     managementOutcome: project.managementOutcome,
     imagePosition: index % 2 === 0 ? 'left' : 'right',
@@ -93,22 +96,38 @@ export default async function RecentProjects() {
               <div
                 className={project.imagePosition === 'right' ? 'lg:col-start-1 lg:row-start-1' : ''}
               >
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-4 flex-wrap">
                   <span className="text-[#E85D3F] font-medium text-xs tracking-wide uppercase">
                     {project.category}
                   </span>
                   <span className="text-gray-400">•</span>
                   <span className="text-gray-600 text-sm">{project.year}</span>
+                  <span className="text-gray-400">•</span>
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      project.status === 'completed'
+                        ? 'bg-green-500 text-white'
+                        : project.status === 'in-progress'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-yellow-500 text-white'
+                    }`}
+                  >
+                    {project.status === 'completed'
+                      ? 'Completed'
+                      : project.status === 'in-progress'
+                        ? 'In Progress'
+                        : 'Planned'}
+                  </span>
                 </div>
 
                 <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
                   {project.title}
                 </h3>
 
-                <p className="text-[#E85D3F] font-bold text-xl mb-6">{project.value}</p>
+                {/* <p className="text-[#E85D3F] font-bold text-xl mb-6">{project.value}</p> */}
 
                 <div className="space-y-4">
-                  {project.deliveryChallenge && (
+                  {/* {project.deliveryChallenge && (
                     <div>
                       <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-2">
                         DELIVERY CHALLENGE
@@ -117,7 +136,7 @@ export default async function RecentProjects() {
                         {project.deliveryChallenge}
                       </p>
                     </div>
-                  )}
+                  )} */}
 
                   {project.managementOutcome && (
                     <div>
