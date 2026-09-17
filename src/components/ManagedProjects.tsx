@@ -89,7 +89,7 @@ export default async function ManagedProjects() {
 
               <div className="text-center mb-4">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
-                <p className="text-[#E85D3F] font-bold text-lg">{project.value}</p>
+                {/* <p className="text-[#E85D3F] font-bold text-lg">{project.value}</p> */}
               </div>
 
               <Link href={`/projects/${project.slug}`}>
