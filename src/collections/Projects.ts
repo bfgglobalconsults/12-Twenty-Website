@@ -12,7 +12,7 @@ export const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'category', 'value', 'status'],
+    defaultColumns: ['title', 'category', 'year', 'status'],
   },
   access: {
     read: () => true,
@@ -94,22 +94,6 @@ export const Projects: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'Project Year (e.g., 2021 - 2024)',
-    },
-    {
-      name: 'value',
-      type: 'text',
-      required: true,
-      label: 'Project Value',
-      admin: {
-        description: 'e.g., ₦762M or ₦1.5B',
-        placeholder: '₦500M',
-      },
-    },
-    {
-      name: 'deliveryChallenge',
-      type: 'textarea',
-      required: true,
-      label: 'Delivery Challenge',
     },
     {
       name: 'managementOutcome',

@@ -39,7 +39,7 @@ export default async function ManagedProjects() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.docs.map((project) => (
             <div key={project.id} className="group cursor-pointer">
-              <div className="rounded-3xl overflow-hidden mb-6 shadow-lg">
+              <div className="rounded-3xl overflow-hidden mb-6 shadow-lg relative">
                 {project.featuredImage &&
                 typeof project.featuredImage !== 'string' &&
                 project.featuredImage.url ? (
@@ -67,11 +67,29 @@ export default async function ManagedProjects() {
                     </svg>
                   </div>
                 )}
+                {/* Status Badge */}
+                <div className="absolute top-4 right-4">
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      project.status === 'completed'
+                        ? 'bg-green-500 text-white'
+                        : project.status === 'in-progress'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-yellow-500 text-white'
+                    }`}
+                  >
+                    {project.status === 'completed'
+                      ? 'Completed'
+                      : project.status === 'in-progress'
+                        ? 'In Progress'
+                        : 'Planned'}
+                  </span>
+                </div>
               </div>
 
               <div className="text-center mb-4">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
-                <p className="text-[#E85D3F] font-bold text-lg">{project.value}</p>
+                {/* <p className="text-[#E85D3F] font-bold text-lg">{project.value}</p> */}
               </div>
 
               <Link href={`/projects/${project.slug}`}>
