@@ -28,9 +28,7 @@ export default async function RecentProjects() {
     category: project.category?.toUpperCase().replace('-', ' / '),
     year: project.year,
     title: project.title,
-    value: project.value,
     status: project.status,
-    deliveryChallenge: project.deliveryChallenge,
     managementOutcome: project.managementOutcome,
     imagePosition: index % 2 === 0 ? 'left' : 'right',
   }))
