@@ -97,7 +97,6 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           {/* <p className="text-[#F05C36] font-bold text-2xl">{project.value}</p> */}
         </div>
       </section>
-
       {/* Project Details */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
