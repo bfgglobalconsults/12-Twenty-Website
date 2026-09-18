@@ -43,7 +43,7 @@ export const Insights: CollectionConfig = {
       name: 'title',
       type: 'text',
       label: 'Article Title',
-      validate: (val, { data }) => {
+      validate: (val: unknown, { data }: any) => {
         // Only required when publishing
         if (data?.status === 'published' && !val) {
           return 'Title is required for published articles'
@@ -59,7 +59,7 @@ export const Insights: CollectionConfig = {
         position: 'sidebar',
         description: 'Auto-generated on creation. Edit manually to change URL.',
       },
-      validate: (val, { data }) => {
+      validate: (val: unknown, { data }: any) => {
         // Only required when publishing
         if (data?.status === 'published' && !val) {
           return 'Slug is required for published articles'
@@ -72,7 +72,7 @@ export const Insights: CollectionConfig = {
       type: 'upload',
       relationTo: 'media',
       label: 'Featured Image',
-      validate: (val, { data }) => {
+      validate: (val: unknown, { data }: any) => {
         // Only required when publishing
         if (data?.status === 'published' && !val) {
           return 'Featured image is required for published articles'
@@ -85,7 +85,7 @@ export const Insights: CollectionConfig = {
       type: 'textarea',
       label: 'Excerpt/Summary',
       maxLength: 300,
-      validate: (val, { data }) => {
+      validate: (val: unknown, { data }: any) => {
         // Only required when publishing
         if (data?.status === 'published' && !val) {
           return 'Excerpt is required for published articles'
@@ -97,7 +97,7 @@ export const Insights: CollectionConfig = {
       name: 'content',
       type: 'richText',
       label: 'Article Content',
-      validate: (val, { data }) => {
+      validate: (val: unknown, { data }: any) => {
         // Only required when publishing
         if (data?.status === 'published' && !val) {
           return 'Content is required for published articles'
@@ -117,7 +117,7 @@ export const Insights: CollectionConfig = {
         { label: 'Career Development', value: 'career-development' },
         { label: 'Technology', value: 'technology' },
       ],
-      validate: (val, { data }) => {
+      validate: (val: unknown, { data }: any) => {
         // Only required when publishing
         if (data?.status === 'published' && !val) {
           return 'Category is required for published articles'
@@ -138,7 +138,7 @@ export const Insights: CollectionConfig = {
       admin: {
         position: 'sidebar',
       },
-      validate: (val, { data }) => {
+      validate: (val: unknown, { data }: any) => {
         // Only required when publishing
         if (data?.status === 'published' && !val) {
           return 'Published date is required for published articles'
