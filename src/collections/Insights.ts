@@ -42,43 +42,72 @@ export const Insights: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
-      required: true,
       label: 'Article Title',
+      validate: (val, { data }) => {
+        // Only required when publishing
+        if (data?.status === 'published' && !val) {
+          return 'Title is required for published articles'
+        }
+        return true
+      },
     },
     {
       name: 'slug',
       type: 'text',
-      required: true,
       unique: true,
       admin: {
         position: 'sidebar',
         description: 'Auto-generated on creation. Edit manually to change URL.',
+      },
+      validate: (val, { data }) => {
+        // Only required when publishing
+        if (data?.status === 'published' && !val) {
+          return 'Slug is required for published articles'
+        }
+        return true
       },
     },
     {
       name: 'featuredImage',
       type: 'upload',
       relationTo: 'media',
-      required: true,
       label: 'Featured Image',
+      validate: (val, { data }) => {
+        // Only required when publishing
+        if (data?.status === 'published' && !val) {
+          return 'Featured image is required for published articles'
+        }
+        return true
+      },
     },
     {
       name: 'excerpt',
       type: 'textarea',
-      required: true,
       label: 'Excerpt/Summary',
       maxLength: 300,
+      validate: (val, { data }) => {
+        // Only required when publishing
+        if (data?.status === 'published' && !val) {
+          return 'Excerpt is required for published articles'
+        }
+        return true
+      },
     },
     {
       name: 'content',
       type: 'richText',
-      required: true,
       label: 'Article Content',
+      validate: (val, { data }) => {
+        // Only required when publishing
+        if (data?.status === 'published' && !val) {
+          return 'Content is required for published articles'
+        }
+        return true
+      },
     },
     {
       name: 'category',
       type: 'select',
-      required: true,
       options: [
         { label: 'Case Study', value: 'case-study' },
         { label: 'Case Blog', value: 'case-blog' },
@@ -88,6 +117,13 @@ export const Insights: CollectionConfig = {
         { label: 'Career Development', value: 'career-development' },
         { label: 'Technology', value: 'technology' },
       ],
+      validate: (val, { data }) => {
+        // Only required when publishing
+        if (data?.status === 'published' && !val) {
+          return 'Category is required for published articles'
+        }
+        return true
+      },
     },
     {
       name: 'author',
@@ -98,10 +134,16 @@ export const Insights: CollectionConfig = {
     {
       name: 'publishedDate',
       type: 'date',
-      required: true,
       label: 'Published Date',
       admin: {
         position: 'sidebar',
+      },
+      validate: (val, { data }) => {
+        // Only required when publishing
+        if (data?.status === 'published' && !val) {
+          return 'Published date is required for published articles'
+        }
+        return true
       },
     },
     {

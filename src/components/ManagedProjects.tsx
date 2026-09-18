@@ -10,12 +10,8 @@ export default async function ManagedProjects() {
   const projectsData = await payload.find({
     collection: 'projects',
     limit: 6,
-    where: {
-      status: {
-        equals: 'completed',
-      },
-    },
     sort: '-createdAt',
+    depth: 2, // Populate featuredImage
   })
 
   return (
