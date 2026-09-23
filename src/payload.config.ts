@@ -51,7 +51,7 @@ export default buildConfig({
   }),
   sharp,
   email: nodemailerAdapter({
-    defaultFromAddress: process.env.EMAIL_FROM || 'noreply@12twentygroup.com',
+    defaultFromAddress: process.env.EMAIL_FROM || 'support@12twentygroup.com',
     defaultFromName: '12Twenty Group',
     transportOptions: {
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
@@ -61,6 +61,11 @@ export default buildConfig({
         user: process.env.SMTP_USER || '',
         pass: process.env.SMTP_PASS || '',
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
+      debug: true, // Enable debug output
+      logger: true, // Log information in console
     } as any,
   }),
   plugins: [

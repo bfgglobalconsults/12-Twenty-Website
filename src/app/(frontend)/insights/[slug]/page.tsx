@@ -98,14 +98,20 @@ export default async function InsightPage({ params }: InsightPageProps) {
 
         {/* Category & Date */}
         <div className="flex items-center gap-4 mb-6">
-          <span className="bg-[#E85D3F] text-white px-4 py-1 rounded-full text-sm font-semibold">
-            {getCategoryLabel(insight.category)}
-          </span>
-          <span className="text-gray-500 text-sm">{formatDate(insight.publishedDate)}</span>
+          {insight.category && (
+            <span className="bg-[#E85D3F] text-white px-4 py-1 rounded-full text-sm font-semibold">
+              {getCategoryLabel(insight.category)}
+            </span>
+          )}
+          {insight.publishedDate && (
+            <span className="text-gray-500 text-sm">{formatDate(insight.publishedDate)}</span>
+          )}
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{insight.title}</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          {insight.title || 'Untitled'}
+        </h1>
 
         {/* Excerpt */}
         {insight.excerpt && <p className="text-xl text-gray-600 mb-8">{insight.excerpt}</p>}
@@ -117,7 +123,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
             <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-12">
               <Image
                 src={insight.featuredImage.url}
-                alt={insight.featuredImage.alt || insight.title}
+                alt={insight.featuredImage.alt || insight.title || 'Insight image'}
                 fill
                 className="object-cover"
               />

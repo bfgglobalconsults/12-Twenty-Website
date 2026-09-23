@@ -273,14 +273,14 @@ export interface Team {
  */
 export interface Insight {
   id: string;
-  title: string;
+  title?: string | null;
   /**
    * Auto-generated on creation. Edit manually to change URL.
    */
-  slug: string;
-  featuredImage: string | Media;
-  excerpt: string;
-  content: {
+  slug?: string | null;
+  featuredImage?: (string | null) | Media;
+  excerpt?: string | null;
+  content?: {
     root: {
       type: string;
       children: {
@@ -294,17 +294,20 @@ export interface Insight {
       version: number;
     };
     [k: string]: unknown;
-  };
-  category:
-    | 'case-study'
-    | 'case-blog'
-    | 'leadership'
-    | 'digital-transformation'
-    | 'research'
-    | 'career-development'
-    | 'technology';
+  } | null;
+  category?:
+    | (
+        | 'case-study'
+        | 'case-blog'
+        | 'leadership'
+        | 'digital-transformation'
+        | 'research'
+        | 'career-development'
+        | 'technology'
+      )
+    | null;
   author?: (string | null) | Team;
-  publishedDate: string;
+  publishedDate?: string | null;
   readTime?: number | null;
   tags?:
     | {
