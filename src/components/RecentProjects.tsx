@@ -9,16 +9,20 @@ export default async function RecentProjects() {
 
   const projectsData = await payload.find({
     collection: 'projects',
-    limit: 3,
-    where: {
-      status: {
-        equals: 'completed',
-      },
-    },
+    limit: 10,
     sort: '-createdAt',
   })
 
-  const projects = projectsData.docs.map((project: Project, index: number) => ({
+  // Prioritize featured projects first, then by creation date
+  // Filter to show only completed projects OR featured projects (regardless of status)
+  const allProjects = projectsData.docs as Project[]
+  const featuredProjects = allProjects.filter((p) => p.featured === true)
+  const completedNonFeatured = allProjects.filter(
+    (p) => p.featured !== true && p.status === 'completed',
+  )
+  const sortedProjects = [...featuredProjects, ...completedNonFeatured].slice(0, 3)
+
+  const projects = sortedProjects.map((project: Project, index: number) => ({
     id: project.id,
     slug: project.slug,
     image:
