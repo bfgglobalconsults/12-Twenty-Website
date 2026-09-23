@@ -61,6 +61,11 @@ export default buildConfig({
         user: process.env.SMTP_USER || '',
         pass: process.env.SMTP_PASS || '',
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
+      debug: true, // Enable debug output
+      logger: true, // Log information in console
     } as any,
   }),
   plugins: [
