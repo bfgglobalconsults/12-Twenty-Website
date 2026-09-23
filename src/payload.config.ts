@@ -51,7 +51,7 @@ export default buildConfig({
   }),
   sharp,
   email: nodemailerAdapter({
-    defaultFromAddress: process.env.EMAIL_FROM || 'noreply@12twentygroup.com',
+    defaultFromAddress: process.env.EMAIL_FROM || 'support@12twentygroup.com',
     defaultFromName: '12Twenty Group',
     transportOptions: {
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
